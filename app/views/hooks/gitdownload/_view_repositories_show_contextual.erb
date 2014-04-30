@@ -1,0 +1,19 @@
+<div id="gitIcon"></div>
+
+<div id="gitOptions" title="RedGit">
+	<p>
+		<label for="gitUrl">GIT Repository URL</label>
+		<pre onclick="this.select();" id="gitUrl">http://redmine.tagwork-one.de/git/<%= @project.identifier %>/</pre>	
+	</p>
+
+	<p>
+		<label for="gitBranch">Choose Branch</label>
+		<input id="gitBranch" readonly="readonly" type="text" value="http://redmine.tagwork-one.de/git/<%= @project.identifier %>/">	
+	</p>
+
+	<p>
+		<label for="gitRev">Choose Revision</label>
+		<input id="gitRev" readonly="readonly" type="text" value="http://redmine.tagwork-one.de/git/<%= @project.identifier %>/">	
+	</p>
+
+</div>

@@ -1,0 +1,32 @@
+#gitIcon {
+	float: right;
+	background: url(../images/git_icon.png) no-repeat center center;
+    height: 23px;
+    margin: 4px 0 0 4px;
+    width: 67px;
+    cursor: pointer;
+}
+
+#gitOptions {
+	display: none;
+}
+
+#gitOptions label {
+	font-size: 10px;
+	font-weight: bold;
+	margin: 4px 0px 2px 0px;
+	display: block;
+}
+
+#gitOptions #gitUrl {
+	width: 100%;
+	text-align: center;
+}
+
+#gitOptions pre {
+	border: 1px solid #999;
+	background: #dedede;
+	border-radius: 3px;
+	padding: 5px 0px;
+	overflow: hidden;
+}
