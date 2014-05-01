@@ -1,0 +1,13 @@
+<% locale = User.current.language.blank? ? ::I18n.locale : User.current.language %>
+
+<% html_title l(:label_gitdownload_config) %>
+
+<% content_for :header_tags do %>
+    
+<% end %>
+
+	<p>
+		<label for="git_url"><%= l(:label_gitdownload_host) %></label>
+	    <input type="text" id="git_url" value="<%= settings["git_url"] %>" name="settings[git_url]" >
+
+	</p>
