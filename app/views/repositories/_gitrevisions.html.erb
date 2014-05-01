@@ -1,0 +1,41 @@
+
+<% show_revision_graph = ( @repository.supports_revision_graph? && path.blank? ) %>
+<%= if show_revision_graph && revisions && revisions.any?
+    indexed_commits, graph_space = index_commits(revisions, @repository.branches) do |scmid|
+                             url_for(
+                               :controller => 'repositories',
+                               :action => 'revision',
+                               :id => project,
+                               :repository_id => @repository.identifier_param,
+                               :rev => scmid)
+                         end
+    render :partial => 'revision_graph',
+         :locals => {
+            :commits => indexed_commits,
+            :space => graph_space
+        }
+end %>
+<table class="list changesets">
+	<thead>
+		<tr>
+			<th class="gitRadio"></th>
+			<th class="id"><%= l(:label_revision) %></th>
+			<th><%= l(:label_date) %></th>
+			<th><%= l(:field_author) %></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% revisions.each do |changeset| %>
+		<tr class="changeset <%= cycle 'odd', 'even' %>">
+			<td class="gitRadio">
+				<%= check_box_tag('revGit', "#{changeset.identifier}") %>
+			</td>
+			<%= content_tag(:td, :class => 'id') do %>
+				<%= link_to_revision(changeset, @repository) %>
+			<% end %>
+			<td class="committed_on"><%= format_time(changeset.committed_on) %></td>
+			<td class="author"><%= h truncate(changeset.author.to_s, :length => 30) %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

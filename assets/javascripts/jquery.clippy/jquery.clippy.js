@@ -79,7 +79,7 @@
 				var flashvars = $.extend({}, opts.flashvars, {text: text});
 
 				swfobject.embedSWF(opts.clippy_path, id, opts.width, opts.height, 
-					'10', false, flashvars, {scale: "noscale"}, opts.swfobject_attributes);
+					'10', false, flashvars, {scale: "noscale", wmode: "transparent"}, opts.swfobject_attributes);
 			});
 		}
 		else

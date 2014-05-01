@@ -19,7 +19,6 @@
 }
 
 #gitOptions #gitUrl {
-	width: 100%;
 	text-align: center;
 }
 
@@ -27,6 +26,28 @@
 	border: 1px solid #999;
 	background: #dedede;
 	border-radius: 3px;
-	padding: 5px 0px;
+	padding: 7px 0 5px 26px;
 	overflow: hidden;
+}
+
+#gitOptions object {
+	margin-top: -37px;
+	margin-left: 2px;
+	position: absolute;
+	border:none;
+}
+
+
+#gitOptions tr.changeset td.committed_on, #gitOptions tr.changeset td.author {
+	width: auto !important;
+}
+
+#gitOptions .id {
+	width: 50px !important;
+}
+
+#revs.disabled {
+	opacity: 0.5;
+	-webkit-opacity: 0.5;
+	-moz-opacity: 0.5;
 }
