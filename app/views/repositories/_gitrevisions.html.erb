@@ -1,20 +1,3 @@
-
-<% show_revision_graph = ( @repository.supports_revision_graph? && path.blank? ) %>
-<%= if show_revision_graph && revisions && revisions.any?
-    indexed_commits, graph_space = index_commits(revisions, @repository.branches) do |scmid|
-                             url_for(
-                               :controller => 'repositories',
-                               :action => 'revision',
-                               :id => project,
-                               :repository_id => @repository.identifier_param,
-                               :rev => scmid)
-                         end
-    render :partial => 'revision_graph',
-         :locals => {
-            :commits => indexed_commits,
-            :space => graph_space
-        }
-end %>
 <table class="list changesets">
 	<thead>
 		<tr>
