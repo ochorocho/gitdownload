@@ -26,7 +26,7 @@
 		<span class="clippy" data-text="http://redmine.tagwork-one.de/git/<%= @project.identifier %>/"></span>	
 	</p>
 	<p>
-		<%= debug(@repository) %>
+<!-- 		<%= debug(@repository) %> -->
 		<h3>Choose Branch</h3>
 		<% if !@repository.branches.nil? && @repository.branches.length > 0 -%>
 			<%= select_tag :gitBranch, options_for_select([''] + @repository.branches, @rev), :id => 'gitBranch' %>
