@@ -3,29 +3,42 @@ class GitdownloadController < ApplicationController
 
   def index
   
-	if User.current.allowed_to?(:commit_access, @project)
-		if !params[:journal].nil?
-#			@journalHide = Journal.find(params[:journal])
-# 			if @journalHide.private_notes?
-# 				@journalAjax = ['status' => 'success', 'changed_to' => 'false']
-# 				
-# 				@journalHide.private_notes = '0'
-# 				@journalHide.save
-# 			else
-# 				@journalAjax = ['status' => 'success', 'changed_to' => 'true']
-# 
-# 				@journalHide.private_notes = '1'
-# 				@journalHide.save
-# 			end
+	if User.current.logged?
+		if !params[:repository].nil?
+			repo = Repository.find(params[:repository])
+			storage = "#{Rails.root}/tmp/git/"
+			filename = "#{params[:identifier]}-#{params[:archive]}.#{params[:gitFormat]}"
+
+			# CREATE GIT FOLDER in tmp/
+			dir = File.dirname("#{storage}")
+			FileUtils.mkdir_p("#{dir}")
+
+			# HANDLE TMP FOLDER
+			Dir.mkdir("#{storage}") unless File.exists?("#{storage}")
+			system("find #{storage} -type f -mmin +10 -exec rm {} \;")
 			
+			# GIT GERNERATE ARCHIVE
+			if !params[:archive].nil?
+				# BUILD GIT COMMAND
+				if params[:gitFormat] == 'tar.gz'
+					command = "cd #{repo.root_url} && git archive #{params[:archive]} --format tar | gzip -9 > #{storage}#{filename}"
+					system(command)
+				end
+				if params[:gitFormat] == 'zip'
+					command = "cd #{repo.root_url} && git archive #{params[:archive]} --format #{params[:gitFormat]} > #{storage}#{filename}"
+					system(command)
+				end
+
+  				send_file "#{storage}#{filename}", :disposition => 'attachment'
+			end			
 		else
-			@gitAjax = ['status' => 'error']
+			#@gitAjax = ['status' => 'error']
 		end 
 
-		render json: @gitAjax
+		#render json: @gitAjax
 	else
-		@gitAjax = ['status' => 'error', 'permission' => 'false']
-		render json: @gitAjax
+		#@gitAjax = ['status' => 'error', 'permission' => 'false']
+		#render json: @gitAjax
 	end
   end
 end

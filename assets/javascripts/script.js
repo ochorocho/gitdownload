@@ -12,9 +12,9 @@ $(function() {
 					
 					var params = '';
 					if(branch !== '') {
-						params += 'branch=' + branch;
+						params += 'archive=' + branch;
 					} else if(changeset !== undefined) {
-						params += 'changeset=' + changeset;
+						params += 'archive=' + changeset;
 					}
 					
 					if(params == '') {
@@ -22,13 +22,20 @@ $(function() {
 					} else {
 						$('#flash_notice').remove();
 						params += '&repository=' + GITDOWNLOAD_ID;
+						params += '&identifier=' + GITDOWNLOAD_REPO;
+						params += '&gitFormat=' + $('#gitFormat option:selected').val();
+						
+						
+//						window.open(data.href,'_blank');
 						
 						$.ajax({
 							dataType: "json",
 							url: url,
-							//data: params,
+							data: params,
+							type: 'GET',
 							success: function(data) {
 								console.log(data);
+								//window.open(data.href,'_blank');
 							},
 							error: function(data) {
 								alert('Error: Please reload!');

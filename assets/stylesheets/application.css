@@ -46,8 +46,25 @@
 	width: 50px !important;
 }
 
+#gitOptions .left {
+	clear: right;
+	float: left;
+	width: 49%;
+	display: block;
+}
+
+#gitOptions .right {
+	float: right;
+	width: 49%;
+}
+
 #revs.disabled {
 	opacity: 0.5;
 	-webkit-opacity: 0.5;
 	-moz-opacity: 0.5;
+}
+
+#revs {
+	clear: both;
+	padding-top: 20px;
 }

@@ -3,6 +3,7 @@
 <script type="text/javascript">
 	
 	GITDOWNLOAD_CONTROLLER = '<%= Setting.protocol.downcase %>://<%= Setting.host_name %>/gitdownload';
+	GITDOWNLOAD_REPO = '<%= @project.identifier %>';
 	GITDOWNLOAD_ID = '<%= @repository.id %>';
 	GITDOWNLOAD_ERROR = '<%= l(:label_latest_revision_plural) %>';
 	
@@ -20,28 +21,30 @@
 </script>
 
 <div id="gitOptions" title="RedGit">
-	<p>
+	<div>
 		<h3>GIT Repository URL</h3>
 		<pre id="gitUrl">http://<%= Setting.host_name %>/<%= @project.identifier %>/</pre>
 		<span class="clippy" data-text="http://redmine.tagwork-one.de/git/<%= @project.identifier %>/"></span>	
-	</p>
-	<p>
-<!-- 		<%= debug(@repository) %> -->
+	</div>
+	<div class="left">
 		<h3>Choose Branch</h3>
 		<% if !@repository.branches.nil? && @repository.branches.length > 0 -%>
 			<%= select_tag :gitBranch, options_for_select([''] + @repository.branches, @rev), :id => 'gitBranch' %>
 		<% end -%>
-	</p>
-	<p>
-		<% if authorize_for('repositories', 'revisions') %>
-		  <% if @changesets && !@changesets.empty? %>
-		    <div id="revs">
-		    <h3><%= l(:label_latest_revision_plural) %></h3>
-		    <%= render :partial => 'gitrevisions',
-		              :locals => {:project => @project, :path => @path,
-		                          :revisions => @changesets, :entry => nil }%>
-		  <% end %>
-	      </div>
-		<% end %>
-	</p>
+	</div>
+	<div class="right">
+		<h3>Format</h3>
+		<%= select_tag :gitFormat, options_for_select(['tar.gz','zip']), :id => 'gitFormat' %>
+	</div>
+
+	<% if authorize_for('repositories', 'revisions') %>
+	  <% if @changesets && !@changesets.empty? %>
+	    <div id="revs">
+	    <h3><%= l(:label_latest_revision_plural) %></h3>
+	    <%= render :partial => 'gitrevisions',
+	              :locals => {:project => @project, :path => @path,
+	                          :revisions => @changesets, :entry => nil }%>
+	  <% end %>
+      </div>
+	<% end %>
 </div>
