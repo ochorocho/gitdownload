@@ -9,33 +9,27 @@ $(function() {
 					var url = GITDOWNLOAD_CONTROLLER;
 					var branch = $('#gitBranch option:selected').val();
 					var changeset = $('#revs input:checked').val();
-					
 					var params = '';
-					if(branch !== '') {
+					if (branch !== '') {
 						params += 'archive=' + branch;
-					} else if(changeset !== undefined) {
+					} else if (changeset !== undefined) {
 						params += 'archive=' + changeset;
 					}
-					
-					if(params == '') {
-						$('#revs').before('<div id="flash_notice" class="flash error">' + GITDOWNLOAD_ERROR + '</div>')
+					if (params === '') {
+						$('#revs').before('<div id="flash_notice" class="flash error">' + GITDOWNLOAD_ERROR + '</div>');
 					} else {
 						$('#flash_notice').remove();
 						params += '&repository=' + GITDOWNLOAD_ID;
 						params += '&identifier=' + GITDOWNLOAD_REPO;
 						params += '&gitFormat=' + $('#gitFormat option:selected').val();
-						
-						
-//						window.open(data.href,'_blank');
-						
 						$.ajax({
 							dataType: "json",
 							url: url,
 							data: params,
-							type: 'GET',
+							type: 'POST',
 							success: function(data) {
 								console.log(data);
-								//window.open(data.href,'_blank');
+								$('#frame').html('<iframe src="' + url + '?filename=' + data.filename + '"></iframe>');
 							},
 							error: function(data) {
 								alert('Error: Please reload!');
@@ -61,7 +55,6 @@ $(function() {
 	});
 	$('select#gitBranch').on('change', function(e) {
 		$('#flash_notice').remove();
-		var optionSelected = $("option:selected", this);
 		var valueSelected = this.value;
 		if (valueSelected !== '') {
 			$('#revs').addClass('disabled');

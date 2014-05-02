@@ -15,7 +15,9 @@ class GitdownloadController < ApplicationController
 
 			# HANDLE TMP FOLDER
 			Dir.mkdir("#{storage}") unless File.exists?("#{storage}")
-			system("find #{storage} -type f -mmin +10 -exec rm {} \;")
+			minutes = Setting.plugin_gitdownload["git_archive_last"].to_i
+			rmfiles = "find #{storage} -type f -mmin +#{minutes} -exec rm {} \\;"
+			system(rmfiles)
 			
 			# GIT GERNERATE ARCHIVE
 			if !params[:archive].nil?
@@ -29,14 +31,14 @@ class GitdownloadController < ApplicationController
 					system(command)
 				end
 			end
-			@gitAjax = ['status' => 'success', 'filename' => filename]
+			@gitAjax = {'status' => 'success', 'filename' => filename, 'rm' => rmfiles}
 		else
-			@gitAjax = ['status' => 'error']
+			@gitAjax = {'status' => 'error'}
 		end 
 
 		render json: @gitAjax
 	else
-		@gitAjax = ['status' => 'error', 'permission' => 'false']
+		@gitAjax = {'status' => 'error', 'permission' => 'false'}
 		render json: @gitAjax
 	end
   end
@@ -44,7 +46,8 @@ class GitdownloadController < ApplicationController
   def download
 	if User.current.logged?
 		if !params[:filename].nil?
-			send_file "#{storage}#{filename}", :disposition => 'attachment'
+			storage = "#{Rails.root}/tmp/git/"
+			send_file "#{storage}#{params[:filename]}", :disposition => 'attachment'
 		end
 	end
   end

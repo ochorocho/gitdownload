@@ -10,15 +10,14 @@
 	    <input style="width: 300px;" type="text" id="git_url" value="<%= settings["git_url"] %>" name="settings[git_url]" >
 	</p>
 	<p>
-		<label for="git_url"><%= l(:git_show_repourl) %></label>
-	    <%= check_box_tag "settings[git_show_repourl]", @settings['git_show_repourl'], @settings['git_show_repourl'] %>
-
+		<label for="git_show_repourl"><%= l(:git_show_repourl) %></label>
+		<%= check_box_tag "settings[git_show_repourl]", settings['git_show_repourl'], @settings['git_show_repourl'] %>
 	</p>
 	<p>
-		<label for="git_url"><%= l(:git_show_branch) %></label>
-	    <%= check_box_tag "settings[git_show_branch]", @settings['git_show_branch'], @settings['git_show_branch'] %>
+		<label for="git_show_revs"><%= l(:git_show_revs) %></label>
+	    <%= check_box_tag "settings[git_show_revs]", settings['git_show_revs'], @settings['git_show_revs'] %>
 	</p>
 	<p>
-		<label for="git_url"><%= l(:git_show_revs) %></label>
-	    <%= check_box_tag "settings[git_show_revs]", @settings['git_show_revs'], @settings['git_show_revs'] %>
+		<label for="git_archive_last"><%= l(:git_archive_last) %></label>
+	    <input type="text" id="git_archive_last" value="<%= settings["git_archive_last"] %>" name="settings[git_archive_last]" >
 	</p>

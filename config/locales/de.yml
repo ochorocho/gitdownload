@@ -1,6 +1,7 @@
 # English strings go here for Rails i18n
 de:
   # my_label: "My label"
+  label_gitdownload_config: "Konfiguration: Gitdownload plugin"
   label_repository_url: "GIT Projektarchiv URL"
   label_download_branch: "Wähle Branch"
   label_download_format: "Format"
@@ -9,3 +10,4 @@ de:
   git_show_repourl: "Projektarchiv URL anzeigen"
   git_show_branch: "Branch Download erlauben"
   git_show_revs: "Revision Download erlauben"
+  git_archive_last: "Dateien die älter sind als X min löschen"

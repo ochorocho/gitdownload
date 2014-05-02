@@ -21,11 +21,14 @@
 </script>
 
 <div id="gitOptions" title="<%= l(:label_git_download) %>">
-	<div>
-		<h3><%= l(:label_repository_url) %></h3>
-		<pre id="gitUrl">git clone <%= Setting.plugin_gitdownload["git_url"] %><%= @project.identifier %>/</pre>
-		<span class="clippy" data-text="git clone <%= Setting.plugin_gitdownload["git_url"] %><%= @project.identifier %>/"></span>	
-	</div>
+
+	<% if Setting.plugin_gitdownload["git_show_repourl"] == 'on' %>
+		<div>
+			<h3><%= l(:label_repository_url) %></h3>
+			<pre id="gitUrl">git clone <%= Setting.plugin_gitdownload["git_url"] %><%= @project.identifier %>/</pre>
+			<span class="clippy" data-text="git clone <%= Setting.plugin_gitdownload["git_url"] %><%= @project.identifier %>/"></span>	
+		</div>
+	<% end %>
 	<div class="left">
 		<h3><%= l(:label_download_branch) %></h3>
 		<% if !@repository.branches.nil? && @repository.branches.length > 0 -%>
@@ -36,15 +39,17 @@
 		<h3><%= l(:label_download_format) %></h3>
 		<%= select_tag :gitFormat, options_for_select(['tar.gz','zip']), :id => 'gitFormat' %>
 	</div>
-
-	<% if authorize_for('repositories', 'revisions') %>
-	  <% if @changesets && !@changesets.empty? %>
-	    <div id="revs">
-	    <h3><%= l(:label_latest_revision_plural) %></h3>
-	    <%= render :partial => 'gitrevisions',
-	              :locals => {:project => @project, :path => @path,
-	                          :revisions => @changesets, :entry => nil }%>
-	  <% end %>
-      </div>
+	<% if Setting.plugin_gitdownload["git_show_revs"]  == 'on' %>
+		<% if authorize_for('repositories', 'revisions') %>
+		  <% if @changesets && !@changesets.empty? %>
+		    <div id="revs">
+		    <h3><%= l(:label_latest_revision_plural) %></h3>
+		    <%= render :partial => 'gitrevisions',
+		              :locals => {:project => @project, :path => @path,
+		                          :revisions => @changesets, :entry => nil }%>
+		  <% end %>
+	      </div>
+		<% end %>
 	<% end %>
+	<div id="frame"></div>	
 </div>
