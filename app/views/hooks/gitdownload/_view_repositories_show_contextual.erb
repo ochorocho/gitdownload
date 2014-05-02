@@ -23,8 +23,8 @@
 <div id="gitOptions" title="<%= l(:label_git_download) %>">
 	<div>
 		<h3><%= l(:label_repository_url) %></h3>
-		<pre id="gitUrl"><%= Setting.plugin_gitdownload["git_url"] %><%= @project.identifier %>/</pre>
-		<span class="clippy" data-text="http://<%= Setting.host_name %>/<%= @project.identifier %>/<%= @project.identifier %>/"></span>	
+		<pre id="gitUrl">git clone <%= Setting.plugin_gitdownload["git_url"] %><%= @project.identifier %>/</pre>
+		<span class="clippy" data-text="git clone <%= Setting.plugin_gitdownload["git_url"] %><%= @project.identifier %>/"></span>	
 	</div>
 	<div class="left">
 		<h3><%= l(:label_download_branch) %></h3>

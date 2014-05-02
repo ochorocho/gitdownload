@@ -8,7 +8,8 @@
 		</tr>
 	</thead>
 	<tbody>
-		<% revisions.each do |changeset| %>
+		
+		<% @repository.changesets.each do |changeset| %>
 		<tr class="changeset <%= cycle 'odd', 'even' %>">
 			<td class="gitRadio">
 				<%= check_box_tag('revGit', "#{changeset.identifier}") %>

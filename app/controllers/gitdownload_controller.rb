@@ -28,17 +28,24 @@ class GitdownloadController < ApplicationController
 					command = "cd #{repo.root_url} && git archive #{params[:archive]} --format #{params[:gitFormat]} > #{storage}#{filename}"
 					system(command)
 				end
-
-  				send_file "#{storage}#{filename}", :disposition => 'attachment'
-			end			
+			end
+			@gitAjax = ['status' => 'success', 'filename' => filename]
 		else
-			#@gitAjax = ['status' => 'error']
+			@gitAjax = ['status' => 'error']
 		end 
 
-		#render json: @gitAjax
+		render json: @gitAjax
 	else
-		#@gitAjax = ['status' => 'error', 'permission' => 'false']
-		#render json: @gitAjax
+		@gitAjax = ['status' => 'error', 'permission' => 'false']
+		render json: @gitAjax
+	end
+  end
+  
+  def download
+	if User.current.logged?
+		if !params[:filename].nil?
+			send_file "#{storage}#{filename}", :disposition => 'attachment'
+		end
 	end
   end
 end

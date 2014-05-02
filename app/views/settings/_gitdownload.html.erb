@@ -5,9 +5,20 @@
 <% content_for :header_tags do %>
     
 <% end %>
-
 	<p>
 		<label for="git_url"><%= l(:label_gitdownload_host) %></label>
-	    <input type="text" id="git_url" value="<%= settings["git_url"] %>" name="settings[git_url]" >
+	    <input style="width: 300px;" type="text" id="git_url" value="<%= settings["git_url"] %>" name="settings[git_url]" >
+	</p>
+	<p>
+		<label for="git_url"><%= l(:git_show_repourl) %></label>
+	    <%= check_box_tag "settings[git_show_repourl]", @settings['git_show_repourl'], @settings['git_show_repourl'] %>
 
+	</p>
+	<p>
+		<label for="git_url"><%= l(:git_show_branch) %></label>
+	    <%= check_box_tag "settings[git_show_branch]", @settings['git_show_branch'], @settings['git_show_branch'] %>
+	</p>
+	<p>
+		<label for="git_url"><%= l(:git_show_revs) %></label>
+	    <%= check_box_tag "settings[git_show_revs]", @settings['git_show_revs'], @settings['git_show_revs'] %>
 	</p>
