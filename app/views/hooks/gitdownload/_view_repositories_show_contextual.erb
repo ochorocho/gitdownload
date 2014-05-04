@@ -5,7 +5,7 @@
 	GITDOWNLOAD_CONTROLLER = '<%= Setting.protocol.downcase %>://<%= Setting.host_name %>/gitdownload';
 	GITDOWNLOAD_REPO = '<%= @project.identifier %>';
 	GITDOWNLOAD_ID = '<%= @repository.id %>';
-	GITDOWNLOAD_ERROR = '<%= l(:label_latest_revision_plural) %>';
+	GITDOWNLOAD_ERROR = '<%= l(:label_reporitory_error) %>';
 	
 	$(document).ready(function() {
 	    $('.clippy').clippy({

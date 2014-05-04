@@ -58,6 +58,11 @@
 	width: 49%;
 }
 
+#gitOptions .flash.error {
+	clear: both;
+	margin-top: 90px;
+}
+
 #revs.disabled {
 	opacity: 0.5;
 	-webkit-opacity: 0.5;

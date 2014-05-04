@@ -7,6 +7,7 @@ en:
   label_format: "Format"
   label_git_download: "GIT Download"
   label_gitdownload_host: "GIT Remote URL"
+  label_reporitory_error: "Select a branch or revision!"
   git_show_repourl: "Show repository URL"
   git_show_branch: "Allow branch download"
   git_show_revs: "Allow revision download"
