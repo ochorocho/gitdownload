@@ -12,3 +12,4 @@ de:
   git_show_branch: "Branch Download erlauben"
   git_show_revs: "Revision Download erlauben"
   git_archive_last: "Dateien die älter sind als X min löschen"
+  git_details: "Repository-Export Details"

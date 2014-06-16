@@ -1,11 +1,6 @@
 <% if User.current.allowed_to?(:commit_access, @project) %>
 	<div class="git box">
 		<script type="text/javascript">
-			
-			GITDOWNLOAD_CONTROLLER = '<%= Setting.protocol.downcase %>://<%= Setting.host_name %>/gitdownload';
-			GITDOWNLOAD_REPO = '<%= @project.identifier %>';
-			GITDOWNLOAD_ERROR = '<%= l(:label_reporitory_error) %>';
-			
 			$(document).ready(function() {
 			    $('.clippy').clippy({
 				    width: 20,
@@ -26,5 +21,12 @@
 				<span class="clippy" data-text="git clone <%= Setting.plugin_gitdownload["git_url"] %><%= @project.identifier %>/"></span>	
 			</div>
 		<% end %>
+
+
+		<%= link_to l(:git_details),
+			:controller => 'repositories',
+			:action => 'show',
+			:git_dl => '1'
+		%>
 	</div>
 <% end %>

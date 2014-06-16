@@ -1,95 +1,90 @@
 #gitIcon {
-	float: right;
-	background: url(../images/git_icon.png) no-repeat center center;
-    height: 23px;
-    margin: 4px 0 0 4px;
-    width: 67px;
-    cursor: pointer;
-}
-
-#gitOptions {
-	display: none;
+	float:right;
+	background:url(../images/git_icon.png) no-repeat center center;
+	height:23px;
+	margin:4px 0 0 4px;
+	width:67px;
+	cursor:pointer;
 }
 
 #gitOptions label {
-	font-size: 10px;
-	font-weight: bold;
-	margin: 4px 0px 2px 0px;
-	display: block;
+	font-size:10px;
+	font-weight:700;
+	margin:4px 0 2px;
+	display:block;
 }
 
 #gitUrl {
-	border: 1px solid #999;
-	background: #dedede;
-	border-radius: 3px;
-	padding: 7px 0 5px 26px;
-	overflow-y: auto;
-	text-align: center;
+	border:1px solid #999;
+	background:#dedede;
+	border-radius:3px;
+	padding:7px 0 5px 26px;
+	overflow-y:auto;
+	text-align:center;
 }
 
 div.git #gitUrl {
-	padding: 4px 0 14px 26px !important;
-	border: 0px;
-	background: none;
-	text-align: left;
+	padding:4px 0 14px 26px!important;
+	border:0;
+	background:none;
+	text-align:left;
 }
 
-div.git object, #gitOptions object {
-	margin-top: -35px;
-	margin-left: 2px;
-	position: absolute;
+div.git object,#gitOptions object {
+	margin-top:-35px;
+	margin-left:2px;
+	position:absolute;
 	border:none;
 }
 
 div.git object {
-	margin-top: -42px;
+	margin-top:-42px;
 }
 
-
-#gitOptions tr.changeset td.committed_on, #gitOptions tr.changeset td.author {
-	width: auto !important;
+#gitOptions tr.changeset td.committed_on,#gitOptions tr.changeset td.author {
+	width:auto!important;
 }
 
 #gitOptions .id {
-	width: 50px !important;
+	width:50px!important;
 }
 
 #gitOptions .left {
-	clear: right;
-	float: left;
-	width: 49%;
-	display: block;
+	clear:right;
+	float:left;
+	width:49%;
+	display:block;
 }
 
 #gitOptions .right {
-	float: right;
-	width: 49%;
+	float:right;
+	width:49%;
 }
 
 #gitOptions .flash.error {
-	clear: both;
-	margin-top: 90px;
+	clear:both;
+	margin-top:90px;
 }
 
 #revs.disabled {
-	opacity: 0.5;
-	-webkit-opacity: 0.5;
-	-moz-opacity: 0.5;
+	opacity:.5;
+	-webkit-opacity:.5;
+	-moz-opacity:.5;
 }
 
 #revs {
-	clear: both;
-	padding-top: 20px;
+	clear:both;
+	padding-top:20px;
 }
 
 #frame {
-	width: 1px;
-	height: 1px;
-	overflow: hidden;
+	width:1px;
+	height:1px;
+	overflow:hidden;
 }
 
 div.git h3 {
-	background: url(../images/git_24.png) no-repeat left center;
-	background-size: 16px 16px;
-	padding-left: 20px;
+	background:url(../images/git_24.png) no-repeat left center;
+	background-size:16px 16px;
+	padding-left:20px;
 }

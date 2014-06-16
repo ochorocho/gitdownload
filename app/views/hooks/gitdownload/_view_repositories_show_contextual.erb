@@ -18,6 +18,10 @@
 			    },
 			    clippy_path: '<%= Setting.protocol.downcase %>://<%= Setting.host_name %>/plugin_assets/gitdownload/javascripts/jquery.clippy/clippy.swf'
 		    });
+
+		<% if params[:git_dl] == '1' %>
+			$("#gitOptions").dialog("open");
+		<% end %>
 		});
 	</script>
 	
@@ -42,14 +46,15 @@
 		</div>
 		<% if Setting.plugin_gitdownload["git_show_revs"]  == 'on' %>
 			<% if authorize_for('repositories', 'revisions') %>
-			  <% if @changesets && !@changesets.empty? %>
-			    <div id="revs">
-			    <h3><%= l(:label_latest_revision_plural) %></h3>
-			    <%= render :partial => 'gitrevisions',
-			              :locals => {:project => @project, :path => @path,
-			                          :revisions => @changesets, :entry => nil }%>
-			  <% end %>
-		      </div>
+				<% if @changesets && !@changesets.empty? %>
+					<div id="revs">
+						<h3><%= l(:label_latest_revision_plural) %></h3>
+						
+						<%= render :partial => 'gitrevisions',
+							:locals => {:project => @project, :path => @path,
+							:revisions => @changesets, :entry => nil } %>
+					</div>
+				<% end %>
 			<% end %>
 		<% end %>
 		<div id="frame"></div>	

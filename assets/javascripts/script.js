@@ -1,47 +1,50 @@
 $(function() {
+	$("#gitOptions").dialog({
+		autoOpen: false,
+		modal: true,
+		width: 500,
+		height: 340,
+		buttons: {
+			Download: function() {
+				var url = GITDOWNLOAD_CONTROLLER;
+				var branch = $('#gitBranch option:selected').val();
+				var changeset = $('#revs input:checked').val();
+				var params = '';
+				if (branch !== '') {
+					params += 'archive=' + branch;
+				} else if (changeset !== undefined) {
+					params += 'archive=' + changeset;
+				}
+				if (params === '') {
+					$('#revs').before('<div id="flash_notice" class="flash error">' + GITDOWNLOAD_ERROR + '</div>');
+				} else {
+					$('#flash_notice').remove();
+					params += '&repository=' + GITDOWNLOAD_ID;
+					params += '&identifier=' + GITDOWNLOAD_REPO;
+					params += '&gitFormat=' + $('#gitFormat option:selected').val();
+					$.ajax({
+						dataType: "json",
+						url: url,
+						data: params,
+						type: 'POST',
+						success: function(data) {
+							console.log(data);
+							$('#frame').html('<iframe src="' + url + '?filename=' + data.filename + '"></iframe>');
+						},
+						error: function(data) {
+							alert('Error: Please reload!');
+						}
+					});
+				}
+			},
+			Close: function() {
+				$(this).dialog("close");
+			}
+		}
+	});
 	$('#gitOptions object').blur();
 	$('#gitIcon').click(function() {
-		$("#gitOptions").dialog({
-			modal: true,
-			width: 500,
-			buttons: {
-				Download: function() {
-					var url = GITDOWNLOAD_CONTROLLER;
-					var branch = $('#gitBranch option:selected').val();
-					var changeset = $('#revs input:checked').val();
-					var params = '';
-					if (branch !== '') {
-						params += 'archive=' + branch;
-					} else if (changeset !== undefined) {
-						params += 'archive=' + changeset;
-					}
-					if (params === '') {
-						$('#revs').before('<div id="flash_notice" class="flash error">' + GITDOWNLOAD_ERROR + '</div>');
-					} else {
-						$('#flash_notice').remove();
-						params += '&repository=' + GITDOWNLOAD_ID;
-						params += '&identifier=' + GITDOWNLOAD_REPO;
-						params += '&gitFormat=' + $('#gitFormat option:selected').val();
-						$.ajax({
-							dataType: "json",
-							url: url,
-							data: params,
-							type: 'POST',
-							success: function(data) {
-								console.log(data);
-								$('#frame').html('<iframe src="' + url + '?filename=' + data.filename + '"></iframe>');
-							},
-							error: function(data) {
-								alert('Error: Please reload!');
-							}
-						});
-					}
-				},
-				Close: function() {
-					$(this).dialog("close");
-				}
-			}
-		});
+		$("#gitOptions").dialog("open");
 	});
 	$('.gitRadio input').click(function() {
 		$('.gitRadio input').not($(this)).removeAttr('checked');

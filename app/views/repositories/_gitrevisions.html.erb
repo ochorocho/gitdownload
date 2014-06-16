@@ -1,25 +1,27 @@
-<table class="list changesets">
-	<thead>
-		<tr>
-			<th class="gitRadio"></th>
-			<th class="id"><%= l(:label_revision) %></th>
-			<th><%= l(:label_date) %></th>
-			<th><%= l(:field_author) %></th>
-		</tr>
-	</thead>
-	<tbody>
-		
-		<% @repository.changesets.each do |changeset| %>
-		<tr class="changeset <%= cycle 'odd', 'even' %>">
-			<td class="gitRadio">
-				<%= check_box_tag('revGit', "#{changeset.identifier}") %>
-			</td>
-			<%= content_tag(:td, :class => 'id') do %>
-				<%= link_to_revision(changeset, @repository) %>
+<% if User.current.allowed_to?(:commit_access, @project) %>
+	<table class="list changesets">
+		<thead>
+			<tr>
+				<th class="gitRadio"></th>
+				<th class="id"><%= l(:label_revision) %></th>
+				<th><%= l(:label_date) %></th>
+				<th><%= l(:field_author) %></th>
+			</tr>
+		</thead>
+		<tbody>
+			
+			<% @repository.changesets.each do |changeset| %>
+			<tr class="changeset <%= cycle 'odd', 'even' %>">
+				<td class="gitRadio">
+					<%= check_box_tag('revGit', "#{changeset.identifier}") %>
+				</td>
+				<%= content_tag(:td, :class => 'id') do %>
+					<%= link_to_revision(changeset, @repository) %>
+				<% end %>
+				<td class="committed_on"><%= format_time(changeset.committed_on) %></td>
+				<td class="author"><%= h truncate(changeset.author.to_s, :length => 30) %></td>
+			</tr>
 			<% end %>
-			<td class="committed_on"><%= format_time(changeset.committed_on) %></td>
-			<td class="author"><%= h truncate(changeset.author.to_s, :length => 30) %></td>
-		</tr>
-		<% end %>
-	</tbody>
-</table>
+		</tbody>
+	</table>
+<% end %>
