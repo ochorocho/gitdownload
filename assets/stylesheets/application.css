@@ -1,10 +1,11 @@
 #gitIcon {
 	float:right;
 	background:url(../images/git_icon.png) no-repeat center center;
-	height:23px;
+	height:24px;
 	margin:4px 0 0 4px;
 	width:67px;
 	cursor:pointer;
+	background-size:58px 24px;
 }
 
 #gitOptions label {
@@ -85,6 +86,6 @@ div.git object {
 
 div.git h3 {
 	background:url(../images/git_24.png) no-repeat left center;
-	background-size:16px 16px;
+	background-size:17px 16px;
 	padding-left:20px;
 }
