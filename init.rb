@@ -16,3 +16,4 @@ end
 # VIEW HOOKS
 require 'gitdownload/hooks/view_layouts_base_html_head_hook'
 require 'gitdownload/hooks/view_repositories_show_contextual'
+require 'gitdownload/hooks/view_projects_show_right'
