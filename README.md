@@ -20,7 +20,11 @@ cd /your/redmine/root/
 touch tmp/restart.txt
 ```
 
-IMPORTANT: Permissions are tied to "commit_access"
+** IMPORTANT: **
+
+* Permissions are tied to "commit_access"
+* Make sure "Hostname" and "Protocol" is set correctly!
+* On the plugins configuration site set the GIT Url
 
 ## Features
 
