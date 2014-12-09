@@ -23,15 +23,20 @@ class GitdownloadController < ApplicationController
 			if !params[:archive].nil?
 				# BUILD GIT COMMAND
 				if params[:gitFormat] == 'tar.gz'
-					command = "cd #{repo.root_url} && git archive #{params[:archive]} --format tar | gzip -9 > #{storage}#{filename}"
+					command = "cd #{repo.root_url} && #{Redmine::Configuration['scm_git_command']} archive #{params[:archive]} --format tar | gzip -9 > #{storage}#{filename}"
 					system(command)
 				end
 				if params[:gitFormat] == 'zip'
-					command = "cd #{repo.root_url} && git archive #{params[:archive]} --format #{params[:gitFormat]} > #{storage}#{filename}"
+					command = "cd #{repo.root_url} && #{Redmine::Configuration['scm_git_command']} archive #{params[:archive]} --format #{params[:gitFormat]} > #{storage}#{filename}"
+					system(command)
+				end
+
+				if params[:gitFormat] == 'tar.bz2'
+					command = "cd #{repo.root_url} && #{Redmine::Configuration['scm_git_command']} archive #{params[:archive]} --format tar | bzip2 -9 > #{storage}#{filename}"
 					system(command)
 				end
 			end
-			@gitAjax = {'status' => 'success', 'filename' => filename, 'rm' => rmfiles}
+			@gitAjax = {'status' => 'success', 'filename' => filename, 'rm' => rmfiles, 'command' => command}
 		else
 			@gitAjax = {'status' => 'error'}
 		end 
