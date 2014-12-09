@@ -42,7 +42,7 @@
 		</div>
 		<div class="right">
 			<h3><%= l(:label_download_format) %></h3>
-			<%= select_tag :gitFormat, options_for_select(['tar.gz', 'tar.bz2', 'zip']), :id => 'gitFormat' %>
+			<%= select_tag :gitFormat, options_for_select(['tar.gz','zip']), :id => 'gitFormat' %>
 		</div>
 		<% if Setting.plugin_gitdownload["git_show_revs"]  == 'on' %>
 			<% if authorize_for('repositories', 'revisions') %>
