@@ -20,21 +20,45 @@ class GitdownloadController < ApplicationController
 			system(rmfiles)
 			
 			# GIT GERNERATE ARCHIVE
-			if !params[:archive].nil?
-				# BUILD GIT COMMAND
-				if params[:gitFormat] == 'tar.gz'
-					command = "cd #{repo.root_url} && #{Redmine::Configuration['scm_git_command']} archive #{params[:archive]} --format tar | gzip -9 > #{storage}#{filename}"
-					system(command)
-				end
-				if params[:gitFormat] == 'zip'
-					command = "cd #{repo.root_url} && #{Redmine::Configuration['scm_git_command']} archive #{params[:archive]} --format #{params[:gitFormat]} > #{storage}#{filename}"
-					system(command)
+			if params[:archive] != 'undefined'
+				if params[:type] == 'all'
+					# BUILD GIT COMMAND
+					if params[:gitFormat] == 'tar.gz'
+						command = "cd #{repo.root_url} && #{Redmine::Configuration['scm_git_command']} archive #{params[:archive]} --format tar | gzip -9 > #{storage}#{filename}"
+						system(command)
+					end
+					if params[:gitFormat] == 'zip'
+						command = "cd #{repo.root_url} && #{Redmine::Configuration['scm_git_command']} archive #{params[:archive]} --format #{params[:gitFormat]} > #{storage}#{filename}"
+						system(command)
+					end
+	
+					if params[:gitFormat] == 'tar.bz2'
+						command = "cd #{repo.root_url} && #{Redmine::Configuration['scm_git_command']} archive #{params[:archive]} --format tar | bzip2 -9 > #{storage}#{filename}"
+						system(command)
+					end
 				end
 
-				if params[:gitFormat] == 'tar.bz2'
-					command = "cd #{repo.root_url} && #{Redmine::Configuration['scm_git_command']} archive #{params[:archive]} --format tar | bzip2 -9 > #{storage}#{filename}"
-					system(command)
-				end
+
+#git archive -o /var/www/clients/client1/web18/web/tmp/update.zip 5b8e58f7560a1dbc9f626e5fb7bcc75e6689a542 $(git diff --name-only #{params[:archive]} #{params[:archive]}~1)
+
+
+				
+				if params[:type] == 'changes'
+					# BUILD GIT COMMAND
+					if params[:gitFormat] == 'tar.gz'
+						command = "cd #{repo.root_url} && #{Redmine::Configuration['scm_git_command']} archive -o #{storage}#{filename} #{params[:archive]} $(#{Redmine::Configuration['scm_git_command']} diff --name-only #{params[:archive]} #{params[:archive]}~1)"
+						system(command)
+					end
+					if params[:gitFormat] == 'zip'
+						command = "cd #{repo.root_url} && #{Redmine::Configuration['scm_git_command']} archive -o #{storage}#{filename} #{params[:archive]} $(#{Redmine::Configuration['scm_git_command']} diff --name-only #{params[:archive]} #{params[:archive]}~1)"
+						system(command)
+					end
+	
+					if params[:gitFormat] == 'tar.bz2'
+						command = "cd #{repo.root_url} && #{Redmine::Configuration['scm_git_command']} archive -o #{storage}#{filename} #{params[:archive]} $(#{Redmine::Configuration['scm_git_command']} diff --name-only #{params[:archive]} #{params[:archive]}~1)"
+						system(command)
+					end
+				end				
 			end
 			@gitAjax = {'status' => 'success', 'filename' => filename, 'rm' => rmfiles, 'command' => command}
 		else

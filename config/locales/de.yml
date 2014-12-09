@@ -8,6 +8,7 @@ de:
   label_git_download: "GIT Download"
   label_gitdownload_host: "GIT Url"
   label_reporitory_error: "Branch oder Revision auswählen"
+  label_download_changelist: "Geänderte Dateien"
   git_show_repourl: "Projektarchiv URL anzeigen"
   git_show_branch: "Branch Download erlauben"
   git_show_revs: "Revision Download erlauben"

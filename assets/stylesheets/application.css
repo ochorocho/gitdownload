@@ -160,3 +160,22 @@ div.git h3 {
     -webkit-transform: scaleY(1.0);
   }
 }
+
+.changeset-list .folder, .changeset-list .folder ul {
+	display: inline;
+}
+
+.changeset-list li.change.folder {
+	display: block !important;
+    float: none !important;
+}
+
+.changeset-list li.change.folder > a {
+	display: none !important;
+}
+
+.changeset-list li.change.folder, .changeset-list ul {
+	padding: 0px !important;
+	padding-left: 0px !important;
+	background: none !important;
+}

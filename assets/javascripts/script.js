@@ -21,6 +21,7 @@ $(function() {
 					$('#flash_notice').remove();
 					params += '&repository=' + GITDOWNLOAD_ID;
 					params += '&identifier=' + GITDOWNLOAD_REPO;
+					params += '&type=' + $('#gitType').val();
 					params += '&gitFormat=' + $('#gitFormat option:selected').val();
 
 					var spinner = '<div id="generateSpinner">';
