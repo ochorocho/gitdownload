@@ -3,7 +3,7 @@ class GitdownloadController < ApplicationController
 
   def index
   
-	if !User.current.allowed_to?(:commit_access, :global => true).nil?
+	if User.current.allowed_to?(:commit_access, @project, :global => true)
 		if !params[:repository].nil?
 			repo = Repository.find(params[:repository])
 			storage = "#{Rails.root}/tmp/git/"
