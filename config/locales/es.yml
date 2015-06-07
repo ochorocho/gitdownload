@@ -1,0 +1,16 @@
+# Spanish strings go here for Rails i18n
+es:
+  # my_label: "My label"
+  label_gitdownload_config: "Configuración: Gitdownload plugin"
+  label_repository_url: "URL Repositorio git"
+  label_download_branch: "Seleccione rama"
+  label_download_format: "Formato"
+  label_git_download: "Descargar GIT"
+  label_gitdownload_host: "URL Remota GIT"
+  label_reporitory_error: "Seleccione una rama o revisión !"
+  label_download_changelist: "Archivos modificados en este commit"
+  git_show_repourl: "Mostrar URL del repositorio"
+  git_show_branch: "Permitir descargar rama"
+  git_show_revs: "Permitir descargar revisión"
+  git_archive_last: "Borrar archivos con antiguedad de (min)"
+  git_details: "Exportar todo el repositorio"
