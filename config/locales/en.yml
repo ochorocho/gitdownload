@@ -4,7 +4,7 @@ en:
   label_gitdownload_config: "Configuration: Gitdownload plugin"
   label_repository_url: "GIT Repository URL"
   label_download_branch: "Select Branch"
-  label_format: "Format"
+  label_download_format: "Format"
   label_git_download: "GIT Download"
   label_gitdownload_host: "GIT Remote URL"
   label_reporitory_error: "Select a branch or revision!"
