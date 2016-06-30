@@ -7,7 +7,14 @@ class GitdownloadController < ApplicationController
 		if !params[:repository].nil?
 			repo = Repository.find(params[:repository])
 			storage = "#{Rails.root}/tmp/git/"
-			filename = "#{params[:identifier]}-#{params[:archive]}.#{params[:gitFormat]}"
+			
+			if repo.identifier.nil?
+    			repoid = ""
+            else
+                repoid = "#{repo.identifier}-"
+            end 
+			
+			filename = "#{params[:identifier]}-#{repoid}#{params[:archive]}.#{params[:gitFormat]}"
 
 			# CREATE GIT FOLDER in tmp/
 			dir = File.dirname("#{storage}")
@@ -73,11 +80,9 @@ class GitdownloadController < ApplicationController
   end
   
   def download
-	if User.current.logged?
-		if !params[:filename].nil?
-			storage = "#{Rails.root}/tmp/git/"
-			send_file "#{storage}#{params[:filename]}", :disposition => 'attachment'
-		end
+	if !params[:filename].nil?
+		storage = "#{Rails.root}/tmp/git/"
+		send_file "#{storage}#{params[:filename]}", :disposition => 'attachment'
 	end
   end
 end
