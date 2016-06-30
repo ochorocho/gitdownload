@@ -5,6 +5,11 @@
 * Linux/Unix based OS
 * GIT installed
 
+## Should work with ...
+ * Redmine >= 2.6
+ * Redmine 3.x
+ * Git >= 1.9
+
 ## Installation
 
 _Clone repository:_
