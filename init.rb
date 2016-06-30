@@ -6,6 +6,8 @@ Redmine::Plugin.register :gitdownload do
   url 'http://example.com/path/to/plugin'
   author_url 'http://example.com/about'
   
+  permission :commit_access, :gitdownload => :index
+  
   settings :default => {'git_url' => 'http://your.git.url/git/',
   		'git_show_repourl' => "1",
   		'git_show_branch' => "1",
