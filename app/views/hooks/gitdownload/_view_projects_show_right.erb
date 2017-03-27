@@ -1,24 +1,16 @@
 <% if User.current.allowed_to?(:commit_access, @project) %>
 	<div class="git box">
-		<script type="text/javascript">
-			$(document).ready(function() {
-			    $('.clippy').clippy({
-				    width: 20,
-				    height: 20,
-				    flashvars: {
-					    label: '',
-					    wmode: "transparent"
-				    },
-				    clippy_path: '<%= Setting.protocol.downcase %>://<%= Setting.host_name %>/plugin_assets/gitdownload/javascripts/jquery.clippy/clippy.swf'
-			    });
-			});
-		</script>
-		
+
+        <script type="text/javascript">
+            new Clipboard('.clipboard');
+        </script>
+
 		<% if Setting.plugin_gitdownload["git_show_repourl"] == 'on' %>
 			<div>
 				<h3><%= l(:label_repository_url) %></h3>
-				<pre id="gitUrl">git clone <%= Setting.plugin_gitdownload["git_url"] %><%= @project.identifier %>/</pre>
-				<span class="clippy" data-text="git clone <%= Setting.plugin_gitdownload["git_url"] %><%= @project.identifier %>/"></span>	
+                <input id="gitUrl" value="git clone <%= Setting.plugin_gitdownload["git_url"] %><%= @project.identifier %>/">
+                <button class="clipboard" data-clipboard-target="#gitUrl">
+                </button>				
 			</div>
 		<% end %>
 

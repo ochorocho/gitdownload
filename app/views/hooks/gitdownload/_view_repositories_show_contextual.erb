@@ -9,20 +9,13 @@
 		GITDOWNLOAD_ERROR = '<%= l(:label_reporitory_error) %>';
 		
 		$(document).ready(function() {
-		    $('.clippy').clippy({
-			    width: 20,
-			    height: 20,
-			    flashvars: {
-				    label: '',
-				    wmode: "transparent"
-			    },
-			    clippy_path: '<%= Setting.protocol.downcase %>://<%= Setting.host_name %>/plugin_assets/gitdownload/javascripts/jquery.clippy/clippy.swf'
-		    });
-
-		<% if params[:git_dl] == '1' %>
-			$("#gitOptions").dialog("open");
-		<% end %>
+    		<% if params[:git_dl] == '1' %>
+    			$("#gitOptions").dialog("open");
+    		<% end %>
 		});
+		
+        new Clipboard('.clipboard');
+
 	</script>
 	
 	<div id="gitOptions" title="<%= l(:label_git_download) %>">
@@ -30,8 +23,8 @@
 		<% if Setting.plugin_gitdownload["git_show_repourl"] == 'on' %>
 			<div>
 				<h3><%= l(:label_repository_url) %></h3>
-				<pre id="gitUrl">git clone <%= Setting.plugin_gitdownload["git_url"] %><%= @project.identifier %>/</pre>
-				<span class="clippy" data-text="git clone <%= Setting.plugin_gitdownload["git_url"] %><%= @project.identifier %>/"></span>	
+                <input readonly="readonly" id="gitUrl" value="git clone <%= Setting.plugin_gitdownload["git_url"] %><%= @project.identifier %>/">
+                <button class="clipboard" data-clipboard-target="#gitUrl">
 			</div>
 		<% end %>
 		<div class="left">

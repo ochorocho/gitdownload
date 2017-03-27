@@ -15,20 +15,53 @@
 	display:block;
 }
 
+#gitOptions #gitUrl {
+    width: 100% !important;
+    padding-left: 0px;
+    margin-bottom: 16px;
+}
+
+#gitOptions .clipboard {
+    background-color: transparent;
+    border: 0;
+    top: 40px;
+}
+
 #gitUrl {
 	border:1px solid #999;
 	background:#dedede;
 	border-radius:3px;
-	padding:7px 0 5px 26px;
+	padding:7px 0 5px 4px;
 	overflow-y:auto;
 	text-align:center;
 }
 
+div.git {
+    position: relative;
+}
+
+.clipboard {
+    width: 30px;
+    height: 30px;
+    background: url(../images/fi-clipboard.svg) no-repeat;
+    background-size: 24px 24px;
+    background-position: center center;
+    background-color: #bebebe;
+    border: 1px solid #e4e4e4;
+    top: 30px;
+    position: absolute;
+    right: 10px;
+}
+
+
+
 div.git #gitUrl {
-	padding:4px 0 14px 26px!important;
+	padding:4px 0 14px 0px!important;
 	border:0;
+	display: block;
 	background:none;
 	text-align:left;
+	width: 90%;
 }
 
 div.git object,#gitOptions object {
