@@ -21,3 +21,11 @@
 		<label for="git_archive_last"><%= l(:git_archive_last) %></label>
 	    <input type="text" id="git_archive_last" value="<%= settings["git_archive_last"] %>" name="settings[git_archive_last]" >
 	</p>
+	<p>
+		<label for="git_repo_create_path"><%= l(:git_repo_create_path) %></label>
+	    <input type="text" id="git_repo_create_path" value="<%= settings["git_repo_create_path"] %>" name="settings[git_repo_create_path]" >
+	</p>
+	<p>
+		<label for="git_auto_create_repo"><%= l(:git_auto_create_repo) %></label>
+		<%= check_box_tag "settings[git_auto_create_repo]", settings['git_auto_create_repo'], @settings['git_auto_create_repo'] %>
+	</p>

@@ -14,3 +14,6 @@ en:
   git_show_revs: "Allow revision download"
   git_archive_last: "Delete files older than (min)"
   git_details: "Repository export details"
+  field_repository_create: "Create Repository"
+  git_repo_create_path: "Path to store repositories"
+  git_auto_create_repo: "Create repository by default"
