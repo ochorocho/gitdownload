@@ -1,3 +1,10 @@
+require 'redmine'
+
+
+Rails.configuration.to_prepare do
+  require_dependency 'gitdownload/repositories_controller_patch'
+end
+
 Redmine::Plugin.register :gitdownload do
   name 'Gitdownload plugin'
   author 'Jochen Roth'
@@ -14,6 +21,7 @@ Redmine::Plugin.register :gitdownload do
   		'git_show_revs' => "1",
   		'git_archive_last' => "10"}, :partial => 'settings/gitdownload'
 end
+
 
 # VIEW HOOKS
 require 'gitdownload/hooks/view_layouts_base_html_head_hook'
