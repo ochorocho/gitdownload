@@ -10,13 +10,13 @@ class GitdownloadController < ApplicationController
 			repo = Repository.find(params[:repository])
 			storage = "#{Rails.root}/tmp/git/"
 			
-			if repo.identifier.nil?
+			if repo.identifier.blank?
     			repoid = ""
             else
                 repoid = "#{repo.identifier}-"
             end 
 			
-			filename = "#{params[:identifier]}-#{repoid}#{params[:archive]}.#{params[:gitFormat]}"
+			filename = "#{@project.identifier}-#{repoid}#{params[:archive]}.#{params[:gitFormat]}"
 
 			# CREATE GIT FOLDER in tmp/
 			dir = File.dirname("#{storage}")

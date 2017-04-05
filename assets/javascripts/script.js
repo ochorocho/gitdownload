@@ -34,7 +34,7 @@ $(function() {
 							$('#generateSpinner').remove();
 						}
 					});
-					
+										
 					$.ajax({
 						dataType: "json",
 						url: url,
