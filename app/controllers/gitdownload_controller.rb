@@ -1,3 +1,5 @@
+require 'fileutils'
+
 class GitdownloadController < ApplicationController
   unloadable
 

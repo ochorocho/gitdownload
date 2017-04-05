@@ -1,3 +1,4 @@
+require 'fileutils'
 require_dependency 'repositories_controller'
 
 module RepositoriesControllerPatch
@@ -6,7 +7,6 @@ module RepositoriesControllerPatch
     base.class_eval do
       unloadable # Send unloadable so it will not be unloaded in development
       alias_method_chain :create, :patch
-#       alias_method_chain :update, :patch
     end
   end
 
@@ -20,28 +20,70 @@ module RepositoriesControllerPatch
           @repository.merge_extra_info(attrs[:attrs_extra])
         end
         @repository.project = @project
+        
+        
         if request.post? && @repository.save
-          redirect_to settings_project_path(@project, :tab => 'wiki')
+
+        git = "HOME=/var/www/redmine.knallimall.org/web/plugins/gitdownload/ #{Redmine::Configuration['scm_git_command']}"        
+        path = params[:repository][:url]
+        storage = "#{Rails.root}/tmp/git/"
+        
+        FileUtils.mkdir_p(path) unless File.exists?(path)
+        Dir.chdir(path) do
+            system "#{git} --bare init --shared"
+            system "#{git} update-server-info"
+        end
+
+        repo_init = "#{storage}repo_#{@repository.identifier}"
+        
+        Dir.chdir(storage) do
+            clone = system "#{git} clone #{path} repo_#{@repository.identifier}"
+            if clone == true
+                logger.info "[#{Time.now}] - Git: cloned repo #{path} to #{repo_init}"
+            else
+                logger.info "[#{Time.now}] - Git: could not clone repo #{path} to #{repo_init}"
+            end
+
+        end
+
+        Dir.chdir(repo_init) do
+            out_file = File.new("init_repo.txt", "w")
+            out_file.puts("Repository: #{path}")
+            out_file.close 
+
+            add = system "#{git} add init_repo.txt"
+            if add == true
+                logger.info "[#{Time.now}] - Git: files added #{path}"
+            else
+                logger.info "[#{Time.now}] - Git: could not add files #{path}"
+            end
+
+            commit = system "#{git} commit -m 'Init Commit ...' && #{git} push origin master"
+            if commit == true
+                logger.info "[#{Time.now}] - Git: files pushed to repo #{path}"
+            else
+                logger.info "[#{Time.now}] - Git: could not commit and push files #{path}"
+            end            
+
+            FileUtils.rm_rf(repo_init)
+        end
+
+
+
+            # WORKING COMMAND
+            #  system "rm -Rf #{repo_init}
+            #  && #{git} clone #{path} #{repo_init}
+            #  && cd #{repo_init} && /usr/bin/touch #{repo_init}/huhu.txt
+            #  && #{git} add huhu.txt 
+            #  && #{git} commit -m 'Init Commit ...'
+            #  && #{git} push origin master "
+
+          redirect_to settings_project_path(@project, :tab => 'repositories')
         else
           render :action => 'new'
         end
       end
         
-#       def update_with_enhance
-#         attrs = pickup_extra_info
-#         @repository.safe_attributes = attrs[:attrs]
-#         if attrs[:attrs_extra].keys.any?
-#           @repository.merge_extra_info(attrs[:attrs_extra])
-#         end
-#         @repository.project = @project
-#         if @repository.save
-#           redirect_to settings_project_path(@project, :tab => 'wiki')
-#         else
-#           render :action => 'edit'
-#         end
-#         true
-#       end
-
   end
 end
 

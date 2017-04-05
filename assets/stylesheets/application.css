@@ -212,3 +212,8 @@ div.git h3 {
 	padding-left: 0px !important;
 	background: none !important;
 }
+
+#gitdownload-info {
+    color: red;
+    display: block;
+}

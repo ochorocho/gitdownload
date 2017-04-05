@@ -10,7 +10,7 @@
 
 <p><%= f.check_box :is_default, :label => :field_repository_is_default %></p>
 
-<% if Setting.plugin_gitdownload["git_auto_create_repo"] == 'on' %>
+<% if Setting.plugin_gitdownload["git_auto_create_repo"] == 'on' &&  params[:action] != 'edit' %>
     <p><%= f.check_box :create_repo, :label => :field_repository_create, :checked => true %></p>
 <% else %>
     <p><%= f.check_box :create_repo, :label => :field_repository_create %></p>    
@@ -22,6 +22,9 @@
 <% unless @repository.identifier_frozen? %>
   <em class="info">
     <%= l(:text_length_between, :min => 1, :max => Repository::IDENTIFIER_MAX_LENGTH) %> <%= l(:text_repository_identifier_info).html_safe %>
+    <span id="gitdownload-info">
+        Changing "<%= l(:field_path_to_repository) %>" will break git-http-backend authentication
+    </span>
   </em>
 <% end %>
 </p>
@@ -34,19 +37,21 @@
 </div>
 
 
-<script type="text/javascript">
-    var path = "<%= Setting.plugin_gitdownload["git_repo_create_path"] %>/<%= @project.identifier %>_collection/"
-    var path = path.replace('//', '/');
-
-    $('#repository_identifier').on('keyup', function() {
-        $('#repository_url').val(path + $(this).val());
-    });
+<% if params[:action] != 'edit' %>
+    <script type="text/javascript">
+        var path = "<%= Setting.plugin_gitdownload["git_repo_create_path"] %>/<%= @project.identifier %>.";
+        var path = path.replace('//', '/');
+        var suffix = ".git";
     
-    if($('#repository_url').val() == '') {
-        $('#repository_url').val(path);
-    }
-</script>
-
+        $('#repository_identifier').on('keyup', function() {
+            $('#repository_url').val(path + $(this).val() + suffix);
+        });
+        
+        if($('#repository_url').val() == '') {
+            $('#repository_url').val(path + '<REPO IDENTIFIER>' + suffix);
+        }
+    </script>
+<% end %>
 
 <p>
   <%= submit_tag(@repository.new_record? ? l(:button_create) : l(:button_save), :disabled => button_disabled) %>
