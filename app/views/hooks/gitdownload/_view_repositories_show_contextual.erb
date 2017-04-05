@@ -4,7 +4,7 @@
 	<script type="text/javascript">
 		
 		GITDOWNLOAD_CONTROLLER = '<%= Setting.protocol.downcase %>://<%= Setting.host_name %>/gitdownload';
-		GITDOWNLOAD_REPO = '<%= @project.identifier %>';
+		GITDOWNLOAD_REPO = '<%= @project.identifier %><% if !repository.identifier.blank? %>.<%= repository.identifier %>.git<% end %>';
 		GITDOWNLOAD_ID = '<%= @repository.id %>';
 		GITDOWNLOAD_ERROR = '<%= l(:label_reporitory_error) %>';
 		
@@ -23,10 +23,12 @@
 		<% if Setting.plugin_gitdownload["git_show_repourl"] == 'on' %>
 			<div>
 				<h3><%= l(:label_repository_url) %></h3>
-                <input readonly="readonly" id="gitUrl" value="git clone <%= Setting.plugin_gitdownload["git_url"] %><%= @project.identifier %>/">
+                <input readonly="readonly" id="gitUrl" value="git clone <%= Setting.plugin_gitdownload["git_url"] %><%= @project.identifier %><% if !@repository.identifier.blank? %>.<%= repository.identifier %>.git<% end %>">
                 <button class="clipboard" data-clipboard-target="#gitUrl">
 			</div>
 		<% end %>
+		
+		
 		<div class="left">
 			<h3><%= l(:label_download_branch) %></h3>
 			<% if !@repository.branches.nil? && @repository.branches.length > 0 -%>
