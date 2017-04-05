@@ -8,12 +8,15 @@
 		<% if Setting.plugin_gitdownload["git_show_repourl"] == 'on' %>
 			<div>
 				<h3><%= l(:label_repository_url) %></h3>
-                <input id="gitUrl" value="git clone <%= Setting.plugin_gitdownload["git_url"] %><%= @project.identifier %>/">
-                <button class="clipboard" data-clipboard-target="#gitUrl">
-                </button>				
+                <% @project.repositories.sort.each do |repository| %>
+                    <div class="clipboardWrapper">
+                        <input class="copyInput" id="gitUrl_<%= repository.identifier %>" value="git clone <%= Setting.plugin_gitdownload["git_url"] %><%= @project.identifier %><% if !repository.identifier.blank? %>.<%= repository.identifier %>.git<% end %>">
+                        <button class="clipboard" data-clipboard-target="#gitUrl_<%= repository.identifier %>">
+                        </button>
+                    </div>                    
+                <% end %>
 			</div>
 		<% end %>
-
 
 		<%= link_to l(:git_details),
 			:controller => 'repositories',

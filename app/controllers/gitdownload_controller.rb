@@ -46,11 +46,6 @@ class GitdownloadController < ApplicationController
 						system(command)
 					end
 				end
-
-
-#git archive -o /var/www/clients/client1/web18/web/tmp/update.zip 5b8e58f7560a1dbc9f626e5fb7bcc75e6689a542 $(git diff --name-only #{params[:archive]} #{params[:archive]}~1)
-
-
 				
 				if params[:type] == 'changes'
 					# BUILD GIT COMMAND

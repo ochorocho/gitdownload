@@ -41,38 +41,36 @@ div.git {
 }
 
 .clipboard {
-    width: 30px;
+    width: 9%;
     height: 30px;
     background: url(../images/fi-clipboard.svg) no-repeat;
     background-size: 24px 24px;
     background-position: center center;
     background-color: #bebebe;
-    border: 1px solid #e4e4e4;
-    top: 30px;
+    border: 0;
+    top: 0px;
+    right: 0px;
+    float: right;
     position: absolute;
-    right: 10px;
+}
+
+.clipboardWrapper {
+    position: relative;
+    background: #edf0f3;
+    border: 1px solid #E8EAEC;
+    height: 30px;
+    margin-bottom: 0.5rem;
 }
 
 
-
-div.git #gitUrl {
-	padding:4px 0 14px 0px!important;
+div.git .copyInput {
+	padding:7px 0 4px 20px!important;
 	border:0;
 	display: block;
 	background:none;
 	text-align:left;
-	width: 90%;
-}
-
-div.git object,#gitOptions object {
-	margin-top:-35px;
-	margin-left:2px;
-	position:absolute;
-	border:none;
-}
-
-div.git object {
-	margin-top:-42px;
+    display: block;
+    width: 84%;
 }
 
 #gitOptions tr.changeset td.committed_on,#gitOptions tr.changeset td.author {
@@ -216,4 +214,10 @@ div.git h3 {
 #gitdownload-info {
     color: red;
     display: block;
+}
+
+@media screen and (max-width: 899px) {
+    div.git .copyInput {
+    	padding:4px 0 4px 20px!important;
+    }
 }
