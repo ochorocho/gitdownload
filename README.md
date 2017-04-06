@@ -30,7 +30,7 @@ _Restart Redmine:_
 touch tmp/restart.txt
 ```
 
-** IMPORTANT: **
+**IMPORTANT:**
 
 * Permissions are tied to "commit_access"
 * Make sure "Hostname" and "Protocol" is set correctly under Administration -> Plugins -> Gitdownload -> Configure!
