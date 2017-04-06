@@ -29,3 +29,28 @@
 		<label for="git_auto_create_repo"><%= l(:git_auto_create_repo) %></label>
 		<%= check_box_tag "settings[git_auto_create_repo]", settings['git_auto_create_repo'], @settings['git_auto_create_repo'] %>
 	</p>
+	<p>
+		<label for="git_configfile">
+		    <%= l(:git_configfile) %>
+		</label>
+	    <textarea rows="10" style="width: 300px;" type="text" id="git_configfile" name="settings[git_configfile]" >
+<% if settings["git_configfile"].blank? %>
+[user]
+    name = Your Name
+    email = you@example.com
+<% else %>
+<%= settings["git_configfile"] %>
+<% end %>
+	    </textarea>
+	    <em class="info">
+            <b>Minimum required config example:</b><br>
+            [user]<br>
+            &nbsp;&nbsp;name = Your Name<br>
+            &nbsp;&nbsp;email = you@example.com<br>
+        </em>
+
+	</p>
+	<p>
+		<label for="git_copyfiles"><%= l(:git_copyfiles) %></label>
+	    <input style="width: 300px;" type="text" id="git_copyfiles" value="<%= settings["git_copyfiles"] %>" name="settings[git_copyfiles]" >
+	</p>

@@ -17,3 +17,5 @@ en:
   field_repository_create: "Create Repository"
   git_repo_create_path: "Path to store repositories"
   git_auto_create_repo: "Create repository by default"
+  git_configfile: "Git configfile (.gitconfig)"
+  git_copyfiles: "Add files to repository on creation"
