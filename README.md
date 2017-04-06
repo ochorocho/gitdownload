@@ -14,6 +14,7 @@
 _Clone repository:_
 
 ```
+cd /your/redmine/root/plugins/
 git clone https://github.com/ochorocho/gitdownload.git
 ```
 
