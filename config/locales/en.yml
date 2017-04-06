@@ -18,4 +18,6 @@ en:
   git_repo_create_path: "Path to store repositories"
   git_auto_create_repo: "Create repository by default"
   git_configfile: "Git configfile (.gitconfig)"
-  git_copyfiles: "Add files to repository on creation"
+  git_copyfiles: "Add files to repository"
+  git_configfile_info: "Minimum required config example:"
+  git_copyfiles_info: "Copies the content of the given folder into the git repository (incl. dotfiles)"

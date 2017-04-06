@@ -42,7 +42,7 @@
 <%= settings["git_configfile"] %>
 <% end %></textarea>
 	    <em class="info">
-            <b>Minimum required config example:</b><br>
+            <b><%= l(:git_configfile_info) %></b><br>
             [user]<br>
             &nbsp;&nbsp;name = Your Name<br>
             &nbsp;&nbsp;email = you@example.com<br>
@@ -51,4 +51,7 @@
 	<p>
 		<label for="git_copyfiles"><%= l(:git_copyfiles) %></label>
 	    <input style="width: 300px;" type="text" id="git_copyfiles" value="<%= settings["git_copyfiles"] %>" name="settings[git_copyfiles]" >
+	    <em class="info">
+            <b><%= l(:git_copyfiles_info) %></b>
+        </em>
 	</p>

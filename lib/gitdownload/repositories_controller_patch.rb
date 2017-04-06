@@ -67,10 +67,7 @@ module RepositoriesControllerPatch
                 out_file.puts("Repository: #{path}")
                 out_file.close 
             else
-#                FileUtils.cp_r copyFiles + '*', repo_init
-#                Dir.glob("#{copyFiles}/*") {|f| FileUtils.cp File.expand_path(f), "#{repo_init}" }
                 FileUtils.cp_r "#{copyFiles}/.", "#{repo_init}"
-                logger.info ">>>>>>>>>>>>>>>>>>>>>>>>>>> #{copyFiles}/* #{repo_init}"
             end
 
             add = system "#{git} add ."
