@@ -42,6 +42,6 @@ touch tmp/restart.txt
 * export specific changeset
 * choose format for export, tar.gz or zip
 * show and copy repository path
-* Initialize repository when created in Redmine
+* Initialize/create repository when created in Redmine
 * Insert default files to created repository
 * Editable .gitconfig to use with Redmine
