@@ -35,6 +35,7 @@ touch tmp/restart.txt
 * Permissions are tied to "commit_access"
 * Make sure "Hostname" and "Protocol" is set correctly under Administration -> Plugins -> Gitdownload -> Configure!
 * On the plugins configuration site set the GIT Url
+* For authentications repositories needs a name following tis schema `<project identifier>.<repository identifier>.git` e.g. mytestrepo.typo3.git (just leave the name as generated)
 
 ## Features
 
