@@ -24,7 +24,19 @@ module RepositoriesControllerPatch
         
         if request.post? && @repository.save
 
-        git = "HOME=/var/www/redmine.knallimall.org/web/plugins/gitdownload/ #{Redmine::Configuration['scm_git_command']}"        
+        # WRITE .gitconfig FILE TO USE WITH THE GIT COMMANDS
+        configContent = Setting.plugin_gitdownload["git_configfile"]
+        configContent.gsub! /\r\n?/, "\n"
+
+        configDir = "#{Rails.root}/plugins/gitdownload/"
+        configFile = "#{configDir}.gitconfig"
+        
+        out_file = File.new("#{configFile}", "w")
+        out_file.puts("#{configContent}")
+        out_file.close 
+        
+        # CREATE REPOSITORY
+        git = "HOME=#{configDir} #{Redmine::Configuration['scm_git_command']}"        
         path = params[:repository][:url]
         storage = "#{Rails.root}/tmp/git/"
         
@@ -34,8 +46,8 @@ module RepositoriesControllerPatch
             system "#{git} update-server-info"
         end
 
+        # CLONE REPOSITORY TO ./tmp/git/repo_*
         repo_init = "#{storage}repo_#{@repository.identifier}"
-        
         Dir.chdir(storage) do
             clone = system "#{git} clone #{path} repo_#{@repository.identifier}"
             if clone == true
@@ -46,6 +58,7 @@ module RepositoriesControllerPatch
 
         end
 
+        # INIT REPO WITH CUSTOM FILES, ADD, COMMIT, PUSH TO REMOTE
         Dir.chdir(repo_init) do
             out_file = File.new("init_repo.txt", "w")
             out_file.puts("Repository: #{path}")
@@ -67,8 +80,6 @@ module RepositoriesControllerPatch
 
             FileUtils.rm_rf(repo_init)
         end
-
-
 
             # WORKING COMMAND
             #  system "rm -Rf #{repo_init}
