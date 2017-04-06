@@ -17,10 +17,16 @@ _Clone repository:_
 git clone https://github.com/ochorocho/gitdownload.git
 ```
 
-_Restart Redmine:_
+_Run plugin migration_
 
 ```
 cd /your/redmine/root/
+rake redmine:plugins:migrate RAILS_ENV=production
+```
+
+_Restart Redmine:_
+
+```
 touch tmp/restart.txt
 ```
 
@@ -36,3 +42,6 @@ touch tmp/restart.txt
 * export specific changeset
 * choose format for export, tar.gz or zip
 * show and copy repository path
+* Initialize repository when created in Redmine
+* Insert default files to created repository
+* Editable .gitconfig to use with Redmine
