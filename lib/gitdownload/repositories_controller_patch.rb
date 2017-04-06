@@ -60,11 +60,20 @@ module RepositoriesControllerPatch
 
         # INIT REPO WITH CUSTOM FILES, ADD, COMMIT, PUSH TO REMOTE
         Dir.chdir(repo_init) do
-            out_file = File.new("init_repo.txt", "w")
-            out_file.puts("Repository: #{path}")
-            out_file.close 
+            
+            copyFiles = Setting.plugin_gitdownload["git_copyfiles"].strip
+            if copyFiles.blank?
+                out_file = File.new("init_repo.txt", "w")
+                out_file.puts("Repository: #{path}")
+                out_file.close 
+            else
+#                FileUtils.cp_r copyFiles + '*', repo_init
+#                Dir.glob("#{copyFiles}/*") {|f| FileUtils.cp File.expand_path(f), "#{repo_init}" }
+                FileUtils.cp_r "#{copyFiles}/.", "#{repo_init}"
+                logger.info ">>>>>>>>>>>>>>>>>>>>>>>>>>> #{copyFiles}/* #{repo_init}"
+            end
 
-            add = system "#{git} add init_repo.txt"
+            add = system "#{git} add ."
             if add == true
                 logger.info "[#{Time.now}] - Git: files added #{path}"
             else
