@@ -1,18 +1,18 @@
 #gitIcon {
-	float:right;
-	background:url(../images/git_icon.png) no-repeat center center;
-	height:24px;
-	margin:4px 0 0 4px;
-	width:67px;
-	cursor:pointer;
-	background-size:58px 24px;
+    float: right;
+    background: url(../images/git_icon.png) no-repeat center center;
+    height: 24px;
+    margin: 4px 0 0 4px;
+    width: 67px;
+    cursor: pointer;
+    background-size: 58px 24px;
 }
 
 #gitOptions label {
-	font-size:10px;
-	font-weight:700;
-	margin:4px 0 2px;
-	display:block;
+    font-size: 10px;
+    font-weight: 700;
+    margin: 4px 0 2px;
+    display: block;
 }
 
 #gitOptions #gitUrl {
@@ -28,12 +28,12 @@
 }
 
 #gitUrl {
-	border:1px solid #999;
-	background:#dedede;
-	border-radius:3px;
-	padding:7px 0 5px 4px;
-	overflow-y:auto;
-	text-align:center;
+    border:1px solid #999;
+    background:#dedede;
+    border-radius:3px;
+    padding:7px 0 5px 4px;
+    overflow-y:auto;
+    text-align:center;
 }
 
 div.git {
@@ -64,77 +64,77 @@ div.git {
 
 
 div.git .copyInput {
-	padding:7px 0 4px 20px!important;
-	border:0;
-	display: block;
-	background:none;
-	text-align:left;
+    padding: 7px 0 4px 20px!important;
+    border: 0;
+    display: block;
+    background: none;
+    text-align: left;
     display: block;
     width: 84%;
 }
 
 #gitOptions tr.changeset td.committed_on,#gitOptions tr.changeset td.author {
-	width:auto!important;
+    width:auto!important;
 }
 
 #gitOptions .id {
-	width:50px!important;
+    width:50px!important;
 }
 
 #gitOptions .left {
-	clear:right;
-	float:left;
-	width:49%;
-	display:block;
+    clear:right;
+    float:left;
+    width:49%;
+    display:block;
 }
 
 #gitOptions .right {
-	float:right;
-	width:49%;
+    float:right;
+    width:49%;
 }
 
 #gitOptions .flash.error {
-	clear:both;
-	margin-top:90px;
+    clear:both;
+    margin-top:90px;
 }
 
 #revs.disabled {
-	opacity:.5;
-	-webkit-opacity:.5;
-	-moz-opacity:.5;
+    opacity: .5;
+    -webkit-opacity: .5;
+    -moz-opacity: .5;
 }
 
 #revs {
-	clear:both;
-	padding-top:20px;
+    clear: both;
+    padding-top: 20px;
 }
 
 #frame {
-	width:1px;
-	height:1px;
-	overflow:hidden;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
 }
 
 div.git h3 {
-	background:url(../images/git_24.png) no-repeat left center;
-	background-size:17px 16px;
-	padding-left:20px;
+    background: url(../images/git_24.png) no-repeat left center;
+    background-size: 17px 16px;
+    padding-left: 20px;
 }
 
 #generateSpinner {
-	position: fixed;
-	top: 0px;
-	right: 0px;
-	bottom: 0px;
-	left: 0px;
-	background: rgba(0,0,0,0.6);
-	z-index: 1500;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background: rgba(0,0,0,0.6);
+    z-index: 1500;
 }
 
 .spinText {
-	text-align: center;
-	font-size: 30px;
-	color: rgba(255,255,255,0.7);
+    text-align: center;
+    font-size: 30px;
+    color: rgba(255,255,255,0.7);
 }
 
 /* SPINNER */
@@ -193,22 +193,22 @@ div.git h3 {
 }
 
 .changeset-list .folder, .changeset-list .folder ul {
-	display: inline;
+    display: inline;
 }
 
 .changeset-list li.change.folder {
-	display: block !important;
+    display: block !important;
     float: none !important;
 }
 
 .changeset-list li.change.folder > a {
-	display: none !important;
+    display: none !important;
 }
 
 .changeset-list li.change.folder, .changeset-list ul {
-	padding: 0px !important;
-	padding-left: 0px !important;
-	background: none !important;
+    padding: 0px !important;
+    padding-left: 0px !important;
+    background: none !important;
 }
 
 #gitdownload-info {
@@ -218,6 +218,6 @@ div.git h3 {
 
 @media screen and (max-width: 899px) {
     div.git .copyInput {
-    	padding:4px 0 4px 20px!important;
+        padding:4px 0 4px 20px!important;
     }
 }
