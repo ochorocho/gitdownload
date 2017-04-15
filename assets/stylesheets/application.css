@@ -1,6 +1,6 @@
 #gitIcon {
     float: right;
-    background: url(../images/git_icon.png) no-repeat center center;
+    background: url("../images/git_icon.png") no-repeat center center;
     height: 24px;
     margin: 4px 0 0 4px;
     width: 67px;
@@ -28,12 +28,12 @@
 }
 
 #gitUrl {
-    border:1px solid #999;
-    background:#dedede;
-    border-radius:3px;
-    padding:7px 0 5px 4px;
-    overflow-y:auto;
-    text-align:center;
+    border: 1px solid #999;
+    background: #dedede;
+    border-radius: 3px;
+    padding: 7px 0 5px 4px;
+    overflow-y: auto;
+    text-align: center;
 }
 
 div.git {
@@ -43,7 +43,7 @@ div.git {
 .clipboard {
     width: 9%;
     height: 30px;
-    background: url(../images/fi-clipboard.svg) no-repeat;
+    background: url("../images/fi-clipboard.svg") no-repeat;
     background-size: 24px 24px;
     background-position: center center;
     background-color: #bebebe;
@@ -62,7 +62,6 @@ div.git {
     margin-bottom: 0.5rem;
 }
 
-
 div.git .copyInput {
     padding: 7px 0 4px 20px!important;
     border: 0;
@@ -74,28 +73,28 @@ div.git .copyInput {
 }
 
 #gitOptions tr.changeset td.committed_on,#gitOptions tr.changeset td.author {
-    width:auto!important;
+    width: auto !important;
 }
 
 #gitOptions .id {
-    width:50px!important;
+    width: 50px !important;
 }
 
 #gitOptions .left {
-    clear:right;
-    float:left;
-    width:49%;
-    display:block;
+    clear: right;
+    float: left;
+    width: 49%;
+    display: block;
 }
 
 #gitOptions .right {
-    float:right;
-    width:49%;
+    float: right;
+    width: 49%;
 }
 
 #gitOptions .flash.error {
-    clear:both;
-    margin-top:90px;
+    clear: both;
+    margin-top: 90px;
 }
 
 #revs.disabled {
@@ -116,7 +115,7 @@ div.git .copyInput {
 }
 
 div.git h3 {
-    background: url(../images/git_24.png) no-repeat left center;
+    background: url("../images/git_24.png") no-repeat left center;
     background-size: 17px 16px;
     padding-left: 20px;
 }
