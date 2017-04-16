@@ -65,7 +65,7 @@ div.git .copy-input {
     text-align: left;
     display: block;
     width: 100%;
-    box-sizing: border-box
+    box-sizing: border-box;
 }
 
 .git-options .committed_on, .git-options .author {
