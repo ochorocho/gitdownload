@@ -25,7 +25,7 @@ $(function() {
                     params += '&gitFormat=' + $('#git-format option:selected').val();
                     var spinner = '<div id="generate-spinner">';
                     spinner += '<div class="spinner"><div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div></div>';
-                    spinner += '<div class="spinText">Archiving in progress ...</div></div>';
+                    spinner += '<div class="spin-text">Archiving in progress ...</div></div>';
                     $('body').prepend(spinner);
                     $(document).keyup(function(e) {
                         if (e.keyCode == 27) {

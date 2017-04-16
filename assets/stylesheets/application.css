@@ -62,7 +62,7 @@ div.git {
     margin-bottom: .5rem;
 }
 
-div.git .copyInput {
+div.git .copy-input {
     padding: 7px 0 4px 20px !important;
     border: 0;
     background: none;
@@ -71,7 +71,7 @@ div.git .copyInput {
     width: 84%;
 }
 
-#git-options tr.changeset td.committed_on,#git-options tr.changeset td.author {
+#git-options tr.changeset td.committed_on, #git-options tr.changeset td.author {
     width: auto !important;
 }
 
@@ -98,7 +98,6 @@ div.git .copyInput {
 
 #revs.disabled {
     opacity: .5;
-    -moz-opacity: .5;
 }
 
 #revs {
@@ -128,7 +127,7 @@ div.git h3 {
     z-index: 1500;
 }
 
-.spinText {
+.spin-text {
     text-align: center;
     font-size: 30px;
     color: rgba(255,255,255,.7);
@@ -202,7 +201,7 @@ div.git h3 {
 }
 
 @media screen and (max-width: 899px) {
-    div.git .copyInput {
+    div.git .copy-input {
         padding: 4px 0 4px 20px !important;
     }
 }
