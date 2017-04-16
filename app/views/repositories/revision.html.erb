@@ -1,5 +1,5 @@
     <% if User.current.allowed_to?(:commit_access, @project) %>
-		<div id="gitIcon"></div>
+		<div id="git-icon"></div>
 		
 		<script type="text/javascript">
 			GITDOWNLOAD_CONTROLLER = '<%= Setting.protocol.downcase %>://<%= Setting.host_name %>/gitdownload';
@@ -9,12 +9,12 @@
 						
 			$(document).ready(function() {
 			<% if params[:git_dl] == '1' %>
-				$("#gitOptions").dialog("open");
+				$("#git-options").dialog("open");
 			<% end %>
 			});
 		</script>
 		
-		<div id="gitOptions" title="<%= l(:label_git_download) %>">
+		<div id="git-options" title="<%= l(:label_git_download) %>">
 			<div>
 				<h3><%= l(:label_download_format) %></h3>
 				<%= select_tag :gitFormat, options_for_select(['tar.gz','tar.bz2','zip']), :id => 'gitFormat' %>

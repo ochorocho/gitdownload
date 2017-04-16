@@ -1,5 +1,5 @@
 <% if User.current.allowed_to?(:commit_access, @project) %>
-	<div id="gitIcon"></div>
+	<div id="git-icon"></div>
 	
 	<script type="text/javascript">
 		
@@ -10,7 +10,7 @@
 		
 		$(document).ready(function() {
     		<% if params[:git_dl] == '1' %>
-    			$("#gitOptions").dialog("open");
+    			$("#git-options").dialog("open");
     		<% end %>
 		});
 		
@@ -18,13 +18,13 @@
 
 	</script>
 	
-	<div id="gitOptions" title="<%= l(:label_git_download) %>">
+	<div id="git-options" title="<%= l(:label_git_download) %>">
 	
 		<% if Setting.plugin_gitdownload["git_show_repourl"] == 'on' %>
 			<div>
 				<h3><%= l(:label_repository_url) %></h3>
-                <input readonly="readonly" id="gitUrl" value="git clone <%= Setting.plugin_gitdownload["git_url"] %><%= @project.identifier %><% if !@repository.identifier.blank? %>.<%= repository.identifier %>.git<% end %>">
-                <button class="clipboard" data-clipboard-target="#gitUrl">
+                <input readonly="readonly" id="git-url" value="git clone <%= Setting.plugin_gitdownload["git_url"] %><%= @project.identifier %><% if !@repository.identifier.blank? %>.<%= repository.identifier %>.git<% end %>">
+                <button class="clipboard" data-clipboard-target="#git-url">
 			</div>
 		<% end %>
 		

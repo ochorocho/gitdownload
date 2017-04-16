@@ -1,4 +1,4 @@
-#gitIcon {
+#git-icon {
     float: right;
     background: url('../images/git_icon.png') no-repeat center center;
     height: 24px;
@@ -8,26 +8,26 @@
     background-size: 58px 24px;
 }
 
-#gitOptions label {
+#git-options label {
     font-size: 10px;
     font-weight: 700;
     margin: 4px 0 2px;
     display: block;
 }
 
-#gitOptions #gitUrl {
+#git-options #git-url {
     width: 100% !important;
     padding-left: 0;
     margin-bottom: 16px;
 }
 
-#gitOptions .clipboard {
+#git-options .clipboard {
     background-color: transparent;
     border: 0;
     top: 40px;
 }
 
-#gitUrl {
+#git-url {
     border: 1px solid #999;
     background: #dedede;
     border-radius: 3px;
@@ -54,12 +54,12 @@ div.git {
     position: absolute;
 }
 
-.clipboardWrapper {
+.clipboard-wrapper {
     position: relative;
     background: #edf0f3;
-    border: 1px solid #E8EAEC;
+    border: 1px solid #e8eaec;
     height: 30px;
-    margin-bottom: 0.5rem;
+    margin-bottom: .5rem;
 }
 
 div.git .copyInput {
@@ -71,34 +71,33 @@ div.git .copyInput {
     width: 84%;
 }
 
-#gitOptions tr.changeset td.committed_on,#gitOptions tr.changeset td.author {
+#git-options tr.changeset td.committed_on,#git-options tr.changeset td.author {
     width: auto !important;
 }
 
-#gitOptions .id {
+#git-options .id {
     width: 50px !important;
 }
 
-#gitOptions .left {
+#git-options .left {
     clear: right;
     float: left;
     width: 49%;
     display: block;
 }
 
-#gitOptions .right {
+#git-options .right {
     float: right;
     width: 49%;
 }
 
-#gitOptions .flash.error {
+#git-options .flash.error {
     clear: both;
     margin-top: 90px;
 }
 
 #revs.disabled {
     opacity: .5;
-    -webkit-opacity: .5;
     -moz-opacity: .5;
 }
 
@@ -119,7 +118,7 @@ div.git h3 {
     padding-left: 20px;
 }
 
-#generateSpinner {
+#generate-spinner {
     position: fixed;
     top: 0;
     right: 0;
@@ -151,42 +150,30 @@ div.git h3 {
   margin: 0 10px;
   display: inline-block;
   
-  -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
   animation: stretchdelay 1.2s infinite ease-in-out;
 }
 
 .spinner .rect2 {
-  -webkit-animation-delay: -1.1s;
   animation-delay: -1.1s;
 }
 
 .spinner .rect3 {
-  -webkit-animation-delay: -1.0s;
-  animation-delay: -1.0s;
+  animation-delay: -1s;
 }
 
 .spinner .rect4 {
-  -webkit-animation-delay: -0.9s;
-  animation-delay: -0.9s;
+  animation-delay: -.9s;
 }
 
 .spinner .rect5 {
-  -webkit-animation-delay: -0.8s;
-  animation-delay: -0.8s;
-}
-
-@-webkit-keyframes stretchdelay {
-  0%, 40%, 100% { -webkit-transform: scaleY(0.4) }  
-  20% { -webkit-transform: scaleY(1.0) }
+  animation-delay: -.8s;
 }
 
 @keyframes stretchdelay {
   0%, 40%, 100% { 
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
+    transform: scaleY(.4);
   }  20% { 
     transform: scaleY(1.0);
-    -webkit-transform: scaleY(1.0);
   }
 }
 

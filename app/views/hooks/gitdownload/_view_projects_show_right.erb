@@ -9,9 +9,9 @@
 			<div>
 				<h3><%= l(:label_repository_url) %></h3>
                 <% @project.repositories.sort.each do |repository| %>
-                    <div class="clipboardWrapper">
-                        <input class="copyInput" id="gitUrl_<%= repository.identifier %>" value="git clone <%= Setting.plugin_gitdownload["git_url"] %><%= @project.identifier %><% if !repository.identifier.blank? %>.<%= repository.identifier %>.git<% end %>">
-                        <button class="clipboard" data-clipboard-target="#gitUrl_<%= repository.identifier %>">
+                    <div class="clipboard-wrapper">
+                        <input class="copyInput" id="git-url_<%= repository.identifier %>" value="git clone <%= Setting.plugin_gitdownload["git_url"] %><%= @project.identifier %><% if !repository.identifier.blank? %>.<%= repository.identifier %>.git<% end %>">
+                        <button class="clipboard" data-clipboard-target="#git-url_<%= repository.identifier %>">
                         </button>
                     </div>                    
                 <% end %>
