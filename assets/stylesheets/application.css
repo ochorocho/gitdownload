@@ -15,25 +15,21 @@
     display: block;
 }
 
-#git-url {
+.git-url {
     width: 100% !important;
-    padding-left: 0;
     margin-bottom: 16px;
-}
-
-.clipboard {
-    background-color: transparent;
-    border: 0;
-    top: 40px;
-}
-
-#git-url {
     border: 1px solid #999;
     background: #dedede;
     border-radius: 3px;
     padding: 7px 0 5px 4px;
     overflow-y: auto;
     text-align: center;
+}
+
+.clipboard {
+    background-color: transparent;
+    border: 0;
+    top: 40px;
 }
 
 div.git {
@@ -194,7 +190,7 @@ div.git h3 {
     background: none !important;
 }
 
-#gitdownload-info {
+.gitdownload-info {
     color: red;
     display: block;
 }

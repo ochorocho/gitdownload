@@ -23,7 +23,7 @@
 		<% if Setting.plugin_gitdownload["git_show_repourl"] == 'on' %>
 			<div>
 				<h3><%= l(:label_repository_url) %></h3>
-                <input readonly="readonly" id="git-url" value="git clone <%= Setting.plugin_gitdownload["git_url"] %><%= @project.identifier %><% if !@repository.identifier.blank? %>.<%= repository.identifier %>.git<% end %>">
+                <input readonly="readonly" id="git-url" class="git-url" value="git clone <%= Setting.plugin_gitdownload["git_url"] %><%= @project.identifier %><% if !@repository.identifier.blank? %>.<%= repository.identifier %>.git<% end %>">
                 <button class="clipboard" data-clipboard-target="#git-url">
 			</div>
 		<% end %>
