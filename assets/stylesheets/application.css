@@ -16,7 +16,8 @@
 }
 
 .git-url {
-    width: calc(100% - 4px);
+    width: 100%;
+    box-sizing: border-box;
     margin-bottom: 16px;
     border: 0;
     background: transparent;
@@ -63,7 +64,8 @@ div.git .copy-input {
     background: none;
     text-align: left;
     display: block;
-    width: calc(100% - 20px);
+    width: 100%;
+    box-sizing: border-box
 }
 
 .git-options .committed_on, .git-options .author {
