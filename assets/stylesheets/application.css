@@ -15,13 +15,13 @@
     display: block;
 }
 
-#git-options #git-url {
+#git-url {
     width: 100% !important;
     padding-left: 0;
     margin-bottom: 16px;
 }
 
-#git-options .clipboard {
+.clipboard {
     background-color: transparent;
     border: 0;
     top: 40px;
