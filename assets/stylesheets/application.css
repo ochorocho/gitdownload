@@ -96,16 +96,16 @@ div.git .copy-input {
     margin-top: 90px;
 }
 
-#revs.disabled {
+.revs.disabled {
     opacity: .5;
 }
 
-#revs {
+.revs {
     clear: both;
     padding-top: 20px;
 }
 
-#frame {
+.frame {
     width: 1px;
     height: 1px;
     overflow: hidden;
@@ -117,13 +117,13 @@ div.git h3 {
     padding-left: 20px;
 }
 
-#generate-spinner {
+.generate-spinner {
     position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0,0,0,.6);
     z-index: 1500;
 }
 
@@ -148,7 +148,6 @@ div.git h3 {
   width: 10px;
   margin: 0 10px;
   display: inline-block;
-  
   animation: stretchdelay 1.2s infinite ease-in-out;
 }
 
@@ -169,10 +168,10 @@ div.git h3 {
 }
 
 @keyframes stretchdelay {
-  0%, 40%, 100% { 
+  0%, 40%, 100% {
     transform: scaleY(.4);
-  }  20% { 
-    transform: scaleY(1.0);
+  } 20% {
+    transform: scaleY(1);
   }
 }
 

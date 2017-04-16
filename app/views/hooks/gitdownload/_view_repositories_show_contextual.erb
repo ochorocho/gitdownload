@@ -43,7 +43,7 @@
 		<% if Setting.plugin_gitdownload["git_show_revs"]  == 'on' %>
 			<% if authorize_for('repositories', 'revisions') %>
 				<% if @changesets && !@changesets.empty? %>
-					<div id="revs">
+					<div id="revs" class="revs">
 						<h3><%= l(:label_latest_revision_plural) %></h3>
 						
 						<%= render :partial => 'gitrevisions',
@@ -53,6 +53,6 @@
 				<% end %>
 			<% end %>
 		<% end %>
-		<div id="frame"></div>	
+		<div id="frame" class="frame"></div>	
 	</div>
 <% end %>
