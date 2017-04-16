@@ -1,3 +1,48 @@
+function downloadRepo() {
+    var url = GITDOWNLOAD_CONTROLLER;
+    var branch = $('#gitBranch option:selected').val();
+    var changeset = $('#revs input:checked').val();
+    var params = '';
+    if (branch !== '') {
+        params += 'archive=' + branch;
+    } else if (changeset !== undefined) {
+        params += 'archive=' + changeset;
+    }
+    if (params === '') {
+        $('#revs').before('<div id="flash_notice" class="flash error">' + GITDOWNLOAD_ERROR + '</div>');
+    } else {
+        $('#flash_notice').remove();
+        params += '&repository=' + GITDOWNLOAD_ID;
+        params += '&identifier=' + GITDOWNLOAD_REPO;
+        params += '&type=' + $('#gitType').val();
+        params += '&gitFormat=' + $('#git-format option:selected').val();
+        var spinner = '<div id="generate-spinner">';
+        spinner += '<div class="spinner"><div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div></div>';
+        spinner += '<div class="spin-text">Archiving in progress ...</div></div>';
+        $('body').prepend(spinner);
+        $(document).keyup(function(e) {
+            if (e.keyCode == 27) {
+                $('#generate-spinner').remove();
+            }
+        });
+        
+        $.ajax({
+            dataType: "json",
+            url: url,
+            data: params,
+            type: 'POST',
+            success: function(data) {
+                $('#generate-spinner').remove();
+                $('#frame').html('<iframe src="' + url + '?filename=' + data.filename + '"></iframe>');
+            },
+            error: function() {
+                alert('Error: Please reload!');
+            }
+        });
+    }
+
+}
+
 $(function() {
     $("#git-options").dialog({
         autoOpen: false,
@@ -6,47 +51,7 @@ $(function() {
         height: 340,
         buttons: {
             Download: function() {
-                var url = GITDOWNLOAD_CONTROLLER;
-                var branch = $('#gitBranch option:selected').val();
-                var changeset = $('#revs input:checked').val();
-                var params = '';
-                if (branch !== '') {
-                    params += 'archive=' + branch;
-                } else if (changeset !== undefined) {
-                    params += 'archive=' + changeset;
-                }
-                if (params === '') {
-                    $('#revs').before('<div id="flash_notice" class="flash error">' + GITDOWNLOAD_ERROR + '</div>');
-                } else {
-                    $('#flash_notice').remove();
-                    params += '&repository=' + GITDOWNLOAD_ID;
-                    params += '&identifier=' + GITDOWNLOAD_REPO;
-                    params += '&type=' + $('#gitType').val();
-                    params += '&gitFormat=' + $('#git-format option:selected').val();
-                    var spinner = '<div id="generate-spinner">';
-                    spinner += '<div class="spinner"><div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div></div>';
-                    spinner += '<div class="spin-text">Archiving in progress ...</div></div>';
-                    $('body').prepend(spinner);
-                    $(document).keyup(function(e) {
-                        if (e.keyCode == 27) {
-                            $('#generate-spinner').remove();
-                        }
-                    });
-                    
-                    $.ajax({
-                        dataType: "json",
-                        url: url,
-                        data: params,
-                        type: 'POST',
-                        success: function(data) {
-                            $('#generate-spinner').remove();
-                            $('#frame').html('<iframe src="' + url + '?filename=' + data.filename + '"></iframe>');
-                        },
-                        error: function() {
-                            alert('Error: Please reload!');
-                        }
-                    });
-                }
+                downloadRepo();
             },
             Close: function() {
                 $(this).dialog("close");
