@@ -8,7 +8,7 @@
     background-size: 58px 24px;
 }
 
-#git-options label {
+.git-options label {
     font-size: 10px;
     font-weight: 700;
     margin: 4px 0 2px;
@@ -71,27 +71,27 @@ div.git .copy-input {
     width: 84%;
 }
 
-#git-options tr.changeset td.committed_on, #git-options tr.changeset td.author {
+.git-options tr.changeset td.committed_on, .git-options tr.changeset td.author {
     width: auto !important;
 }
 
-#git-options .id {
+.git-options .id {
     width: 50px !important;
 }
 
-#git-options .left {
+.git-options .left {
     clear: right;
     float: left;
     width: 49%;
     display: block;
 }
 
-#git-options .right {
+.git-options .right {
     float: right;
     width: 49%;
 }
 
-#git-options .flash.error {
+.git-options .flash.error {
     clear: both;
     margin-top: 90px;
 }

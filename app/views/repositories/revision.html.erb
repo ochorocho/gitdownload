@@ -14,7 +14,7 @@
 			});
 		</script>
 		
-		<div id="git-options" title="<%= l(:label_git_download) %>">
+		<div id="git-options" class="git-options" title="<%= l(:label_git_download) %>">
 			<div>
 				<h3><%= l(:label_download_format) %></h3>
 				<%= select_tag :gitFormat, options_for_select(['tar.gz','tar.bz2','zip']), :id => 'gitFormat' %>
