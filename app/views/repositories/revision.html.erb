@@ -1,5 +1,5 @@
     <% if User.current.allowed_to?(:commit_access, @project) %>
-		<div id="git-icon"></div>
+		<div id="git-icon" class="git-icon"></div>
 		
 		<script type="text/javascript">
 			GITDOWNLOAD_CONTROLLER = '<%= Setting.protocol.downcase %>://<%= Setting.host_name %>/gitdownload';

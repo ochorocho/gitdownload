@@ -1,4 +1,4 @@
-#git-icon {
+.git-icon {
     float: right;
     background: url('../images/git_icon.png') no-repeat center center;
     height: 24px;
@@ -56,6 +56,7 @@ div.git {
     border: 1px solid #e8eaec;
     height: 30px;
     margin-bottom: .5rem;
+    box-sizing: border-box;
 }
 
 div.git .copy-input {
@@ -64,10 +65,10 @@ div.git .copy-input {
     background: none;
     text-align: left;
     display: block;
-    width: 84%;
+    width: calc(100% - 20px);
 }
 
-.git-options tr.changeset td.committed_on, .git-options tr.changeset td.author {
+.git-options td.committed_on, .git-options td.author {
     width: auto !important;
 }
 
