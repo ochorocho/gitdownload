@@ -68,7 +68,7 @@ div.git .copy-input {
     width: calc(100% - 20px);
 }
 
-.git-options td.committed_on, .git-options td.author {
+.git-options .committed_on, .git-options .author {
     width: auto !important;
 }
 
