@@ -16,14 +16,12 @@
 }
 
 .git-url {
-    width: 100% !important;
+    width: calc(100% - 4px);
     margin-bottom: 16px;
-    border: 1px solid #999;
-    background: #dedede;
-    border-radius: 3px;
+    border: 0;
+    background: transparent;
     padding: 7px 0 5px 4px;
     overflow-y: auto;
-    text-align: center;
 }
 
 .clipboard {
@@ -54,7 +52,7 @@ div.git {
     position: relative;
     background: #edf0f3;
     border: 1px solid #e8eaec;
-    height: 30px;
+    height: 32px;
     margin-bottom: .5rem;
     box-sizing: border-box;
 }
