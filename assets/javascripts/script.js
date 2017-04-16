@@ -1,5 +1,5 @@
 $(function() {
-    $("#gitOptions").dialog({
+    $("#git-options").dialog({
         autoOpen: false,
         modal: true,
         width: 500,
@@ -22,7 +22,7 @@ $(function() {
                     params += '&repository=' + GITDOWNLOAD_ID;
                     params += '&identifier=' + GITDOWNLOAD_REPO;
                     params += '&type=' + $('#gitType').val();
-                    params += '&gitFormat=' + $('#gitFormat option:selected').val();
+                    params += '&gitFormat=' + $('#git-format option:selected').val();
                     var spinner = '<div id="generate-spinner">';
                     spinner += '<div class="spinner"><div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div></div>';
                     spinner += '<div class="spinText">Archiving in progress ...</div></div>';
@@ -32,6 +32,7 @@ $(function() {
                             $('#generate-spinner').remove();
                         }
                     });
+                    
                     $.ajax({
                         dataType: "json",
                         url: url,
@@ -52,9 +53,9 @@ $(function() {
             }
         }
     });
-    $('#gitOptions object').blur();
-    $('#gitIcon').click(function() {
-        $("#gitOptions").dialog("open");
+    $('#git-options object').blur();
+    $('#git-icon').click(function() {
+        $("#git-options").dialog("open");
     });
     $('.gitRadio input').click(function() {
         $('.gitRadio input').not($(this)).removeAttr('checked');

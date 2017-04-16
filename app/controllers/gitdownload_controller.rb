@@ -4,10 +4,11 @@ class GitdownloadController < ApplicationController
   unloadable
 
   def index
-  
+    
 	if User.current.allowed_to?(:commit_access, @project, :global => true)
 		if !params[:repository].nil?
 			repo = Repository.find(params[:repository])
+			@project = Project.find(repo.project_id)
 			storage = "#{Rails.root}/tmp/git/"
 			
 			if repo.identifier.blank?
