@@ -67,7 +67,7 @@ div.git .copy-input {
     box-sizing: border-box;
 }
 
-.git-options tr.changeset td.committed_on, .git-options  tr.changeset td.author {
+.git-options tr.changeset .committed_on, .git-options  tr.changeset .author {
     width: auto;
 }
 
