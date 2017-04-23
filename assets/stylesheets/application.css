@@ -58,7 +58,7 @@ div.git {
 }
 
 div.git .copy-input {
-    padding: 7px 0 4px 20px !important;
+    padding: 7px 0 4px 20px;
     border: 0;
     background: none;
     text-align: left;
@@ -67,12 +67,8 @@ div.git .copy-input {
     box-sizing: border-box;
 }
 
-.git-options .committed_on, .git-options .author {
-    width: auto !important;
-}
-
-.git-options .id {
-    width: 50px !important;
+.git-options tr.changeset td.committed_on, .git-options  tr.changeset td.author {
+    width: auto;
 }
 
 .git-options .left {
@@ -171,25 +167,6 @@ div.git h3 {
   }
 }
 
-.changeset-list .folder, .changeset-list .folder ul {
-    display: inline;
-}
-
-.changeset-list li.change.folder {
-    display: block !important;
-    float: none !important;
-}
-
-.changeset-list li.change.folder > a {
-    display: none !important;
-}
-
-.changeset-list li.change.folder, .changeset-list ul {
-    padding: 0 !important;
-    padding-left: 0 !important;
-    background: none !important;
-}
-
 .gitdownload-info {
     color: red;
     display: block;
@@ -197,6 +174,6 @@ div.git h3 {
 
 @media screen and (max-width: 899px) {
     div.git .copy-input {
-        padding: 4px 0 4px 20px !important;
+        padding: 4px 0 4px 20px;
     }
 }
