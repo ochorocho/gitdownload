@@ -40,7 +40,6 @@ function downloadRepo() {
             }
         });
     }
-
 }
 
 $(function() {
@@ -90,4 +89,5 @@ $(function() {
         $('#revs').removeClass('disabled');
         $('#revs input').removeAttr('disabled');
     }
+        
 });

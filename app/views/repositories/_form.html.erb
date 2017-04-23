@@ -10,10 +10,15 @@
 
 <p><%= f.check_box :is_default, :label => :field_repository_is_default %></p>
 
+
+
+
+
+
 <% if Setting.plugin_gitdownload["git_auto_create_repo"] == 'on' &&  params[:action] != 'edit' %>
-    <p><%= f.check_box :create_repo, :label => :field_repository_create, :checked => true %></p>
+    <p id="create_repo"><%= f.check_box :create_repo, :label => :field_repository_create, :checked => true %></p>
 <% else %>
-    <p><%= f.check_box :create_repo, :label => :field_repository_create %></p>    
+    <p id="create_repo"><%= f.check_box :create_repo, :label => :field_repository_create %></p>    
 <% end %>
 
 <p>
@@ -39,6 +44,7 @@
 
 <% if params[:action] != 'edit' %>
     <script type="text/javascript">
+        
         var path = "<%= Setting.plugin_gitdownload["git_repo_create_path"] %>/<%= @project.identifier %>.";
         var path = path.replace('//', '/');
         var suffix = ".git";
