@@ -45,6 +45,7 @@ module RepositoriesControllerPatch
                 storage = "#{Rails.root}/tmp/git/"
                 
                 FileUtils.mkdir_p(path) unless File.exists?(path)
+                FileUtils.mkdir_p(storage) unless File.exists?(storage)
                 Dir.chdir(path) do
                     system "#{git} --bare init --shared"
                     system "#{git} update-server-info"
