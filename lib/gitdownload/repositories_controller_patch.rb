@@ -6,7 +6,8 @@ module RepositoriesControllerPatch
     base.send(:include, InstanceMethods)
     base.class_eval do
       unloadable # Send unloadable so it will not be unloaded in development
-      alias_method_chain :create, :patch
+      alias_method :create, :create_with_patch
+      alias_method :create_with_patch, :create
     end
   end
 
