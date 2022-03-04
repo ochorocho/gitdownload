@@ -2,6 +2,10 @@ require 'fileutils'
 
 class GitdownloadController < ApplicationController
   unloadable
+  # following two lines should have same effect
+  # FIXME: solve "Can't verify CSRF token authenticity."
+  #protect_from_forgery with: :null_session
+  skip_before_action :verify_authenticity_token
 
   def index
     
