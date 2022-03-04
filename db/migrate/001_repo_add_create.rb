@@ -1,4 +1,4 @@
-class RepoAddCreate < ActiveRecord::Migration
+class RepoAddCreate < ActiveRecord::Migration[4.2]
   def up
 	add_column :repositories, :create_repo, :integer
   end
