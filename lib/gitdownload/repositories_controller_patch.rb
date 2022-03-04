@@ -14,15 +14,11 @@ module RepositoriesControllerPatch
   module InstanceMethods
 
       def create_with_patch
-        attrs = pickup_extra_info
         
         if params[:repository_scm] == 'Git'
         
             @repository = Repository.factory(params[:repository_scm])
             @repository.safe_attributes = params[:repository]
-            if attrs[:attrs_extra].keys.any?
-              @repository.merge_extra_info(attrs[:attrs_extra])
-            end
             @repository.project = @project
             
             
