@@ -41,7 +41,6 @@ module RepositoriesControllerPatch
                 storage = "#{Rails.root}/tmp/git/"
                 
                 FileUtils.mkdir_p(path) unless File.exists?(path)
-                FileUtils.mkdir_p(storage) unless File.exists?(storage)
                 Dir.chdir(path) do
                     system "#{git} --bare init --shared"
                     system "#{git} update-server-info"
@@ -49,6 +48,7 @@ module RepositoriesControllerPatch
         
                 # CLONE REPOSITORY TO ./tmp/git/repo_*
                 repo_init = "#{storage}repo_#{@repository.identifier}"
+                FileUtils.mkdir_p(repo_init) unless File.exists?(repo_init)
                 Dir.chdir(storage) do
                     clone = system "#{git} clone #{path} repo_#{@repository.identifier}"
                     if clone == true
