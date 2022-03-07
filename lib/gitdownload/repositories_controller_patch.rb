@@ -36,7 +36,9 @@ module RepositoriesControllerPatch
                 out_file.close 
                 
                 # CREATE REPOSITORY
-                git = "HOME=#{configDir} #{Redmine::Configuration['scm_git_command']}"        
+                git = "#{Redmine::Configuration['scm_git_command']}"
+                git = "git" if git.empty?
+                git = "HOME=#{configDir} " + git
                 path = params[:repository][:url]
                 storage = "#{Rails.root}/tmp/git/"
                 
