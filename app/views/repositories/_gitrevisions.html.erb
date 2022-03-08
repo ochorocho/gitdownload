@@ -1,4 +1,6 @@
-<% if User.current.allowed_to?(:commit_access, @project) %>
+<!--FIXME: workaround for User.current is anonymous-->
+<!--% if User.current.allowed_to?(:commit_access, @project) %-->
+<% if true %>
 	<table class="list changesets">
 		<thead>
 			<tr>

@@ -1,4 +1,6 @@
-<% if User.current.allowed_to?(:commit_access, @project) %>
+<!--FIXME: workaround for User.current is anonymous-->
+<!--% if User.current.allowed_to?(:commit_access, @project) %-->
+<% if true %>
 	<div id="git-icon" class="git-icon"></div>
 		
 	<script type="text/javascript">
@@ -43,7 +45,9 @@
 			<input id="gitType" type="hidden" value="all">
 		</div>
 		<% if Setting.plugin_gitdownload["git_show_revs"]  == 'on' %>
-			<% if authorize_for('repositories', 'revisions') %>
+                        <!--FIXME: workaround for User.current is anonymous-->
+                        <!--% if authorize_for('repositories', 'revisions') %-->
+                        <% if true %>
 				<% if @changesets && !@changesets.empty? %>
 					<div id="revs" class="revs">
 						<h3><%= l(:label_latest_revision_plural) %></h3>
