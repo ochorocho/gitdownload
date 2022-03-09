@@ -27,10 +27,6 @@ function downloadRepo() {
         });
         
         $.ajax({
-            // FIXME: solve "Can't verify CSRF token authenticity."
-            headers: {
-                'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-            },
             dataType: "json",
             url: url,
             data: params,
