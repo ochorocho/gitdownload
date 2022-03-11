@@ -177,3 +177,7 @@ div.git h3 {
         padding: 4px 0 4px 20px;
     }
 }
+
+button.ui-button {
+    height: unset;
+}
