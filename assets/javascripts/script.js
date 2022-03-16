@@ -63,7 +63,7 @@ $(function() {
     });
     $('.gitRadio input').click(function() {
         $('.gitRadio input').not($(this)).removeAttr('checked');
-        if ($(this).attr('checked') == 'checked') {
+        if ($(this).attr('checked') !== 'checked') {
             $(this).removeAttr('checked');
             $('#flash_notice').remove();
         } else {
