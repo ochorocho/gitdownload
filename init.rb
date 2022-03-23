@@ -16,9 +16,9 @@ Redmine::Plugin.register :gitdownload do
   permission :commit_access, :gitdownload => :index
   
   settings :default => {'git_url' => 'http://your.git.url/git/',
-  		'git_show_repourl' => "1",
-  		'git_show_branch' => "1",
-  		'git_show_revs' => "1",
+               'git_show_repourl' => "on",
+               'git_show_branch' => "on",
+               'git_show_revs' => "on",
   		'git_archive_last' => "10"}, :partial => 'settings/gitdownload'
 end
 

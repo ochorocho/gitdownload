@@ -6,22 +6,19 @@ module RepositoriesControllerPatch
     base.send(:include, InstanceMethods)
     base.class_eval do
       unloadable # Send unloadable so it will not be unloaded in development
-      alias_method_chain :create, :patch
+      alias_method :create, :create_with_patch
+      alias_method :create_with_patch, :create
     end
   end
 
   module InstanceMethods
 
       def create_with_patch
-        attrs = pickup_extra_info
         
         if params[:repository_scm] == 'Git'
         
             @repository = Repository.factory(params[:repository_scm])
             @repository.safe_attributes = params[:repository]
-            if attrs[:attrs_extra].keys.any?
-              @repository.merge_extra_info(attrs[:attrs_extra])
-            end
             @repository.project = @project
             
             
@@ -39,7 +36,9 @@ module RepositoriesControllerPatch
                 out_file.close 
                 
                 # CREATE REPOSITORY
-                git = "HOME=#{configDir} #{Redmine::Configuration['scm_git_command']}"        
+                git = "#{Redmine::Configuration['scm_git_command']}"
+                git = "git" if git.empty?
+                git = "HOME=#{configDir} " + git
                 path = params[:repository][:url]
                 storage = "#{Rails.root}/tmp/git/"
                 
@@ -51,6 +50,7 @@ module RepositoriesControllerPatch
         
                 # CLONE REPOSITORY TO ./tmp/git/repo_*
                 repo_init = "#{storage}repo_#{@repository.identifier}"
+                FileUtils.mkdir_p(repo_init) unless File.exists?(repo_init)
                 Dir.chdir(storage) do
                     clone = system "#{git} clone #{path} repo_#{@repository.identifier}"
                     if clone == true

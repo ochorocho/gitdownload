@@ -25,6 +25,19 @@ cd /your/redmine/root/
 rake redmine:plugins:migrate RAILS_ENV=production
 ```
 
+_Install rack-cors:_
+
+Follow https://github.com/cyu/rack-cors to install rack-cors and create `$REDMINE_HOME/config/initializers/cors.rb` with following content:
+
+```
+Rails.application.config.middleware.insert_before 0, Rack::Cors do
+  allow do
+    origins '*'
+    resource '*', headers: :any, methods: [:get, :post, :patch, :put]
+  end
+end
+```
+
 _Restart Redmine:_
 
 ```
