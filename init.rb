@@ -12,14 +12,15 @@ Redmine::Plugin.register :gitdownload do
   version '0.0.1'
   url 'http://example.com/path/to/plugin'
   author_url 'http://example.com/about'
-  
+
   permission :commit_access, :gitdownload => :index
-  
+
   settings :default => {'git_url' => 'http://your.git.url/git/',
-               'git_show_repourl' => "on",
+               'git_show_repourl' => "off",
                'git_show_branch' => "on",
                'git_show_revs' => "on",
-  		'git_archive_last' => "10"}, :partial => 'settings/gitdownload'
+               'git_archive_last' => "10",
+               'git_repo_is_remote' => "off"}, :partial => 'settings/gitdownload'
 end
 
 

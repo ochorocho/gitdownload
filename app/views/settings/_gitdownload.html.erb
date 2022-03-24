@@ -5,17 +5,48 @@
 <% content_for :header_tags do %>
     
 <% end %>
+
+<script type="text/javascript">
+function updateRemoteRelatedElementsEnableStatus() {
+  var value = document.querySelector("#settings_git_repo_is_remote").checked;
+  if (value == true) {
+    $("#settings_git_show_repourl").prop("disabled", false);
+    $("#git_url").prop("disabled", false);
+    $("#git_archive_last").prop("disabled", false);
+    $("#git_repo_create_path").prop("disabled", false);
+    $("#settings_git_auto_create_repo").prop("disabled", false);
+    $("#git_configfile").prop("disabled", false);
+    $("#git_copyfiles").prop("disabled", false);
+  } else {
+    $("#settings_git_show_repourl").prop("disabled", true);
+    $("#git_url").prop("disabled", true);
+    $("#git_archive_last").prop("disabled", true);
+    $("#git_repo_create_path").prop("disabled", true);
+    $("#settings_git_auto_create_repo").prop("disabled", true);
+    $("#git_configfile").prop("disabled", true);
+    $("#git_copyfiles").prop("disabled", true);
+  }
+  // unchecked by default
+  $("#settings_git_show_repourl").prop("checked", false);
+}
+$(document).on("page:load ready", updateRemoteRelatedElementsEnableStatus);
+</script>
+
 	<p>
-		<label for="git_url"><%= l(:label_gitdownload_host) %></label>
-	    <input style="width: 300px;" type="text" id="git_url" value="<%= settings["git_url"] %>" name="settings[git_url]" >
+		<label for="git_show_revs"><%= l(:git_show_revs) %></label>
+	    <%= check_box_tag "settings[git_show_revs]", settings['git_show_revs'], @settings['git_show_revs'] %>
 	</p>
+        <p>
+                <label for="git_repo_is_remote"><%= l(:git_repo_is_remote) %></label>
+                <%= check_box_tag "settings[git_repo_is_remote]", settings['git_repo_is_remote'], @settings['git_repo_is_remote'], :onclick=>"updateRemoteRelatedElementsEnableStatus();" %>
+        </p>
 	<p>
 		<label for="git_show_repourl"><%= l(:git_show_repourl) %></label>
 		<%= check_box_tag "settings[git_show_repourl]", settings['git_show_repourl'], @settings['git_show_repourl'] %>
 	</p>
 	<p>
-		<label for="git_show_revs"><%= l(:git_show_revs) %></label>
-	    <%= check_box_tag "settings[git_show_revs]", settings['git_show_revs'], @settings['git_show_revs'] %>
+		<label for="git_url"><%= l(:label_gitdownload_host) %></label>
+	    <input style="width: 300px;" type="text" id="git_url" value="<%= settings["git_url"] %>" name="settings[git_url]" >
 	</p>
 	<p>
 		<label for="git_archive_last"><%= l(:git_archive_last) %></label>
