@@ -76,9 +76,11 @@ $(function() {
         var valueSelected = this.value;
         if (valueSelected !== '') {
             $('#revs').addClass('disabled');
+            $('#revs').attr('title', 'Please switch to empty branch before choosing a revision').attr('rel', 'tooltip');
             $('#revs input').removeAttr('checked').attr('disabled', 'disabled');
         } else {
             $('#revs').removeClass('disabled');
+            $('#revs').removeAttr('title').removeAttr('rel');
             $('#revs input').removeAttr('disabled');
         }
     });

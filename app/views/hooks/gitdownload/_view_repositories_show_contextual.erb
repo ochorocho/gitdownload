@@ -49,7 +49,7 @@
                         <!--% if authorize_for('repositories', 'revisions') %-->
                         <% if true %>
 				<% if @changesets && !@changesets.empty? %>
-					<div id="revs" class="revs">
+					<div id="revs" class="revs" title="Please switch to empty branch before choosing a revision" rel="tooltip">
 						<h3><%= l(:label_latest_revision_plural) %></h3>
 						
 						<%= render :partial => 'gitrevisions',
