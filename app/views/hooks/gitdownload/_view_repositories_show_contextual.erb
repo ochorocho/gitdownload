@@ -1,5 +1,7 @@
 <!--FIXME: workaround for User.current is anonymous-->
 <!--% if User.current.allowed_to?(:commit_access, @project) %-->
+<%= javascript_include_tag "i18n" %>
+<%= javascript_include_tag "translations" %>
 <% if true %>
 	<div id="git-icon" class="git-icon"></div>
 		
@@ -49,7 +51,7 @@
                         <!--% if authorize_for('repositories', 'revisions') %-->
                         <% if true %>
 				<% if @changesets && !@changesets.empty? %>
-					<div id="revs" class="revs" title="Please switch to empty branch before choosing a revision" rel="tooltip">
+                                       <div id="revs" class="revs" title="<%= l(:git_revisions_tooltip) %>" rel="tooltip">
 						<h3><%= l(:label_latest_revision_plural) %></h3>
 						
 						<%= render :partial => 'gitrevisions',

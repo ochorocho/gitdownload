@@ -76,7 +76,8 @@ $(function() {
         var valueSelected = this.value;
         if (valueSelected !== '') {
             $('#revs').addClass('disabled');
-            $('#revs').attr('title', 'Please switch to empty branch before choosing a revision').attr('rel', 'tooltip');
+            var tip = I18n.t('git_revisions_tooltip');
+            $('#revs').attr('title', tip).attr('rel', 'tooltip');
             $('#revs input').removeAttr('checked').attr('disabled', 'disabled');
         } else {
             $('#revs').removeClass('disabled');

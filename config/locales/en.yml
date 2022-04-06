@@ -21,3 +21,4 @@ en:
   git_copyfiles: "Add files to repository"
   git_configfile_info: "Minimum required config example:"
   git_copyfiles_info: "Copies the content of the given folder into the git repository (incl. dotfiles)"
+  git_revisions_tooltip: "Please switch to empty branch before choosing a revision"
