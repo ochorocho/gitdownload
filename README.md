@@ -55,7 +55,9 @@ rake redmine:plugins:migrate NAME=gitdownload VERSION=0 RAILS_ENV=production
 
 _Delete cors middleware:_
 
-Delete `/your/redmine/root/config/initializers/cors.rb`.
+```
+rm /your/redmine/root/config/initializers/cors.rb
+```
 
 _Restart Redmine:_
 
