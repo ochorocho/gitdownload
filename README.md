@@ -44,6 +44,33 @@ _Restart Redmine:_
 touch tmp/restart.txt
 ```
 
+## Uninstallation
+
+_Undo plugin migration_
+
+```
+cd /your/redmine/root/
+rake redmine:plugins:migrate NAME=gitdownload VERSION=0 RAILS_ENV=production
+```
+
+_Delete gitdownload plugin directory:_
+
+```
+rm -rf /your/redmine/root/plugins/gitdownload
+```
+
+_Delete cors middleware:_
+
+```
+rm /your/redmine/root/config/initializers/cors.rb
+```
+
+_Restart Redmine:_
+
+```
+touch tmp/restart.txt
+```
+
 **IMPORTANT:**
 
 * Permissions are tied to "commit_access"
