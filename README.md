@@ -38,6 +38,14 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
 end
 ```
 
+_Generate `public/javascripts/translation.js` and `public/javascripts/i18n.js`：_
+
+This should be executed everytime after language files like `en.yml` are updated.
+
+```sh
+RAILS_ENV=production rake i18n:js:export
+```
+
 _Restart Redmine:_
 
 ```
