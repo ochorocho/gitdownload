@@ -2,7 +2,7 @@
 <!--% if User.current.allowed_to?(:commit_access, @project) %-->
 <%= javascript_include_tag "i18n" %>
 <%= javascript_include_tag "translations" %>
-<% if true %>
+<% if @repository.type.end_with? "Git" %>
 	<div id="git-icon" class="git-icon"></div>
 		
 	<script type="text/javascript">
