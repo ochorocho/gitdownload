@@ -25,7 +25,7 @@ module RepositoriesControllerPatch
             if request.post? && @repository.save
     
                 # WRITE .gitconfig FILE TO USE WITH THE GIT COMMANDS
-                configContent = Setting.plugin_gitdownload["git_configfile"]
+                configContent = Setting.plugin_gitdownload["git_configfile"].to_s
                 configContent.gsub! /\r\n?/, "\n"
         
                 configDir = "#{Rails.root}/plugins/gitdownload/"
@@ -64,7 +64,7 @@ module RepositoriesControllerPatch
                 # INIT REPO WITH CUSTOM FILES, ADD, COMMIT, PUSH TO REMOTE
                 Dir.chdir(repo_init) do
                     
-                    copyFiles = Setting.plugin_gitdownload["git_copyfiles"].strip
+                    copyFiles = Setting.plugin_gitdownload["git_copyfiles"].to_s.strip
                     if copyFiles.blank?
                         out_file = File.new("init_repo.txt", "w")
                         out_file.puts("Repository: #{path}")
