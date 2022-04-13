@@ -15,14 +15,13 @@ module RepositoriesControllerPatch
 
       def create_with_patch
         
-        if params[:repository_scm] == 'Git'
+        @repository = Repository.factory(params[:repository_scm])
+        @repository.safe_attributes = params[:repository]
+        @repository.project = @project
         
-            @repository = Repository.factory(params[:repository_scm])
-            @repository.safe_attributes = params[:repository]
-            @repository.project = @project
-            
-            
-            if request.post? && @repository.save
+
+        if request.post? && @repository.save
+            if params[:repository_scm] == 'Git'
     
                 # WRITE .gitconfig FILE TO USE WITH THE GIT COMMANDS
                 configContent = Setting.plugin_gitdownload["git_configfile"]
@@ -89,11 +88,10 @@ module RepositoriesControllerPatch
         
                     FileUtils.rm_rf(repo_init)
                 end
-    
-                redirect_to settings_project_path(@project, :tab => 'repositories')
-            else
-                render :action => 'new'
             end
+            redirect_to settings_project_path(@project, :tab => 'repositories')
+        else
+            render :action => 'new'
         end
       end
         
