@@ -5,41 +5,72 @@
 <% content_for :header_tags do %>
     
 <% end %>
-	<p>
-		<label for="git_url"><%= l(:label_gitdownload_host) %></label>
-	    <input style="width: 300px;" type="text" id="git_url" value="<%= settings["git_url"] %>" name="settings[git_url]" >
-	</p>
-	<p>
-		<label for="git_show_repourl"><%= l(:git_show_repourl) %></label>
-		<%= check_box_tag "settings[git_show_repourl]", settings['git_show_repourl'], @settings['git_show_repourl'] %>
-	</p>
+
+<script type="text/javascript">
+function updateRemoteRelatedElementsEnableStatus() {
+  var value = document.querySelector("#settings_git_repo_is_remote").checked;
+  if (value == true) {
+    $("#settings_git_show_repourl").prop("disabled", false);
+    $("#git_url").prop("disabled", false);
+    $("#git_archive_last").prop("disabled", false);
+    $("#git_repo_create_path").prop("disabled", false);
+    $("#settings_git_auto_create_repo").prop("disabled", false);
+    $("#git_configfile").prop("disabled", false);
+    $("#git_copyfiles").prop("disabled", false);
+  } else {
+    $("#settings_git_show_repourl").prop("disabled", true);
+    $("#git_url").prop("disabled", true);
+    $("#git_archive_last").prop("disabled", true);
+    $("#git_repo_create_path").prop("disabled", true);
+    $("#settings_git_auto_create_repo").prop("disabled", true);
+    $("#git_configfile").prop("disabled", true);
+    $("#git_copyfiles").prop("disabled", true);
+  }
+  // unchecked by default
+  $("#settings_git_show_repourl").prop("checked", false);
+}
+$(document).on("page:load ready", updateRemoteRelatedElementsEnableStatus);
+</script>
+
 	<p>
 		<label for="git_show_revs"><%= l(:git_show_revs) %></label>
-	    <%= check_box_tag "settings[git_show_revs]", settings['git_show_revs'], @settings['git_show_revs'] %>
+	    <%= check_box_tag "settings[git_show_revs]", Setting.plugin_gitdownload['git_show_revs'], Setting.plugin_gitdownload['git_show_revs'] %>
+	</p>
+        <p>
+                <label for="git_repo_is_remote"><%= l(:git_repo_is_remote) %></label>
+                <%= check_box_tag "settings[git_repo_is_remote]", Setting.plugin_gitdownload['git_repo_is_remote'], Setting.plugin_gitdownload['git_repo_is_remote'], :onclick=>"updateRemoteRelatedElementsEnableStatus();" %>
+        </p>
+	<p>
+		<label for="git_show_repourl"><%= l(:git_show_repourl) %></label>
+		<%= check_box_tag "settings[git_show_repourl]", Setting.plugin_gitdownload['git_show_repourl'], Setting.plugin_gitdownload['git_show_repourl'] %>
+	</p>
+	<p>
+		<label for="git_url"><%= l(:label_gitdownload_host) %></label>
+	    <input style="width: 300px;" type="text" id="git_url" value="<%= Setting.plugin_gitdownload["git_url"] %>" name="settings[git_url]" >
 	</p>
 	<p>
 		<label for="git_archive_last"><%= l(:git_archive_last) %></label>
-	    <input type="text" id="git_archive_last" value="<%= settings["git_archive_last"] %>" name="settings[git_archive_last]" >
+	    <input type="text" id="git_archive_last" value="<%= Setting.plugin_gitdownload["git_archive_last"] %>" name="settings[git_archive_last]" >
 	</p>
 	<p>
 		<label for="git_repo_create_path"><%= l(:git_repo_create_path) %></label>
-	    <input style="width: 300px;" type="text" id="git_repo_create_path" value="<%= settings["git_repo_create_path"] %>" name="settings[git_repo_create_path]" >
+	    <input style="width: 300px;" type="text" id="git_repo_create_path" value="<%= Setting.plugin_gitdownload["git_repo_create_path"] %>" name="settings[git_repo_create_path]" >
 	</p>
 	<p>
 		<label for="git_auto_create_repo"><%= l(:git_auto_create_repo) %></label>
-		<%= check_box_tag "settings[git_auto_create_repo]", settings['git_auto_create_repo'], @settings['git_auto_create_repo'] %>
+		<%= check_box_tag "settings[git_auto_create_repo]", Setting.plugin_gitdownload['git_auto_create_repo'], Setting.plugin_gitdownload['git_auto_create_repo'] %>
 	</p>
 	<p>
 		<label for="git_configfile">
 		    <%= l(:git_configfile) %>
 		</label>
 	    <textarea rows="10" style="width: 300px;" type="text" id="git_configfile" name="settings[git_configfile]" >
-<% if settings["git_configfile"].blank? %>
+<% if Setting.plugin_gitdownload["git_configfile"].blank? %>
 [user]
     name = Your Name
     email = you@example.com
 <% else %>
-<%= settings["git_configfile"] %>
+<%= Setting.plugin_gitdownload["git_configfile"] %>
 <% end %></textarea>
 	    <em class="info">
             <b><%= l(:git_configfile_info) %></b><br>
@@ -50,7 +81,7 @@
 	</p>
 	<p>
 		<label for="git_copyfiles"><%= l(:git_copyfiles) %></label>
-	    <input style="width: 300px;" type="text" id="git_copyfiles" value="<%= settings["git_copyfiles"] %>" name="settings[git_copyfiles]" >
+	    <input style="width: 300px;" type="text" id="git_copyfiles" value="<%= Setting.plugin_gitdownload["git_copyfiles"] %>" name="settings[git_copyfiles]" >
 	    <em class="info">
             <b><%= l(:git_copyfiles_info) %></b>
         </em>

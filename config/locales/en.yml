@@ -12,6 +12,7 @@ en:
   git_show_repourl: "Show repository URL"
   git_show_branch: "Allow branch download"
   git_show_revs: "Allow revision download"
+  git_repo_is_remote: "Using remote repositories"
   git_archive_last: "Delete files older than (min)"
   git_details: "Repository export details"
   field_repository_create: "Create Repository"

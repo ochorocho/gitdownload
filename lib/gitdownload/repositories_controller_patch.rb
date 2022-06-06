@@ -21,7 +21,7 @@ module RepositoriesControllerPatch
         
 
         if request.post? && @repository.save
-            if params[:repository_scm] == 'Git'
+            if params[:repository_scm] == 'Git' and Setting.plugin_gitdownload["git_repo_is_remote"] == "on"
     
                 # WRITE .gitconfig FILE TO USE WITH THE GIT COMMANDS
                 configContent = Setting.plugin_gitdownload["git_configfile"].to_s
