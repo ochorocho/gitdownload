@@ -10,8 +10,8 @@ Redmine::Plugin.register :gitdownload do
   author 'Jochen Roth'
   description 'Enable Redmine to export/archive GIT repositories'
   version '0.0.1'
-  url 'http://example.com/path/to/plugin'
-  author_url 'http://example.com/about'
+  url 'https://github.com/ochorocho/gitdownload'
+  author_url 'https://github.com/ochorocho'
 
   permission :commit_access, :gitdownload => :index
 
