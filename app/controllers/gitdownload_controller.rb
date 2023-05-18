@@ -43,16 +43,16 @@ class GitdownloadController < ApplicationController
 				if params[:type] == 'all'
 					# BUILD GIT COMMAND
 					if params[:gitFormat] == 'tar.gz'
-						command = "cd #{repo.root_url} && #{git} archive #{params[:archive]} --format tar | gzip -9 > #{storage}#{filename}"
+						command = "cd \"#{repo.root_url}\" && #{git} archive #{params[:archive]} --format tar | gzip -9 > #{storage}#{filename}"
 						system(command)
 					end
 					if params[:gitFormat] == 'zip'
-						command = "cd #{repo.root_url} && #{git} archive #{params[:archive]} --format #{params[:gitFormat]} > #{storage}#{filename}"
+						command = "cd \"#{repo.root_url}\" && #{git} archive #{params[:archive]} --format #{params[:gitFormat]} > #{storage}#{filename}"
 						system(command)
 					end
 	
 					if params[:gitFormat] == 'tar.bz2'
-						command = "cd #{repo.root_url} && #{git} archive #{params[:archive]} --format tar | bzip2 -9 > #{storage}#{filename}"
+						command = "cd \"#{repo.root_url}\" && #{git} archive #{params[:archive]} --format tar | bzip2 -9 > #{storage}#{filename}"
 						system(command)
 					end
 				end
@@ -60,16 +60,16 @@ class GitdownloadController < ApplicationController
 				if params[:type] == 'changes'
 					# BUILD GIT COMMAND
 					if params[:gitFormat] == 'tar.gz'
-						command = "cd #{repo.root_url} && #{git} archive -o #{storage}#{filename} #{params[:archive]} $(#{git} diff --name-only #{params[:archive]} #{params[:archive]}~1)"
+						command = "cd \"#{repo.root_url}\" && #{git} archive -o #{storage}#{filename} #{params[:archive]} $(#{git} diff --name-only #{params[:archive]} #{params[:archive]}~1)"
 						system(command)
 					end
 					if params[:gitFormat] == 'zip'
-						command = "cd #{repo.root_url} && #{git} archive -o #{storage}#{filename} #{params[:archive]} $(#{git} diff --name-only #{params[:archive]} #{params[:archive]}~1)"
+						command = "cd \"#{repo.root_url}\" && #{git} archive -o #{storage}#{filename} #{params[:archive]} $(#{git} diff --name-only #{params[:archive]} #{params[:archive]}~1)"
 						system(command)
 					end
 	
 					if params[:gitFormat] == 'tar.bz2'
-						command = "cd #{repo.root_url} && #{git} archive -o #{storage}#{filename} #{params[:archive]} $(#{git} diff --name-only #{params[:archive]} #{params[:archive]}~1)"
+						command = "cd \"#{repo.root_url}\" && #{git} archive -o #{storage}#{filename} #{params[:archive]} $(#{git} diff --name-only #{params[:archive]} #{params[:archive]}~1)"
 						system(command)
 					end
 				end				
